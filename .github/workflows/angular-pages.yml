@@ -1,34 +1,65 @@
-name: Build & Deploy NBFC Audit PWA
+name: Build & Deploy Angular App to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - master        # change to main if your repo uses main
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      # 1️⃣ Checkout source code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 4️⃣ Build Angular app
       - name: Build Angular app
-        run: npm run build -- --configuration production --base-href /nbfc-audit-pwa/
+        run: |
+          npm run build -- \
+            --configuration production 
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # 5️⃣ Disable Jekyll (CRITICAL for Angular)
+      - name: Disable Jekyll
+        run: touch dist/nbfc-audit-pwa/browser/.nojekyll
+
+      # 6️⃣ Configure GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 7️⃣ Upload build output
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist/nbfc-audit-pwa/browser
+          path: dist/nbfc-audit-pwa/browser
+
+      # 8️⃣ Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

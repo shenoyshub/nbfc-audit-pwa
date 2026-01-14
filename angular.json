@@ -45,6 +45,7 @@
                   "maximumError": "8kB"
                 }
               ],
+              "baseHref": "/nbfc-audit-pwa/",
               "outputHashing": "all",
              "serviceWorker": "src/ngsw-config.json"      
             },

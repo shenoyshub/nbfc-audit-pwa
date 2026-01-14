@@ -1,0 +1,402 @@
+// Variables for consistency
+$primary-color: #2563eb;    // Professional Blue
+$success-color: #16a34a;    // Save Green
+$border-color: #e2e8f0;     // Light Gray
+$text-main: #1e293b;        // Dark Slate
+$bg-app: #f8fafc;           // Off-white background
+
+.finding-form {
+  padding: 16px;
+  padding-bottom: 100px; // Space so content isn't hidden by sticky button
+  background-color: $bg-app;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  .form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: $text-main;
+      margin-bottom: 6px;
+      margin-left: 2px;
+    }
+
+    .form-control {
+      appearance: none; // Removes default mobile styling
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px; // Crucial: Prevents iOS auto-zoom on focus
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      background-color: #ffffff;
+      color: $text-main;
+      transition: border-color 0.2s, box-shadow 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+
+    // Special styling for Multi-select
+    select[multiple] {
+      min-height: 120px;
+      padding: 8px;
+      
+      option {
+        padding: 10px;
+        border-bottom: 1px solid $bg-app;
+        border-radius: 4px;
+        
+        &:checked {
+          background-color: rgba($primary-color, 0.1) linear-gradient(0deg, rgba($primary-color, 0.1) 0%, rgba($primary-color, 0.1) 100%);
+          color: $primary-color;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .hint {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #64748b;
+      font-style: italic;
+    }
+  }
+}
+
+// Sticky Save Button Container
+.btn-save {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  // Styling the button itself
+  width: calc(100% - 32px); // Margin on sides
+  margin: 16px;
+  padding: 16px;
+  background-color: $success-color;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 1000;
+
+  .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+  &:active {
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+    transform: scale(0.98);
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+    filter: brightness(0.9);
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+  }
+  .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+
+  .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+  &:disabled {
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+    background-color: #cbd5e1;
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+    box-shadow: none;
+    .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 40px;  // Give space so the button doesn't overlap labels
+}
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+  }
+}
+.btn-close{
+  font-size: 18px;
+  font-weight: bold;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  
+  // Styling the button itself
+  width: calc(100% - 32px); // Margin on sides
+  margin: 16px;
+  padding: 16px;
+}

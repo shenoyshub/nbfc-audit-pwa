@@ -1,0 +1,182 @@
+/* --------------------------------------------------
+   Variables (Bootstrap-like)
+-------------------------------------------------- */
+$primary: #0d6efd;
+$success: #198754;
+$warning: #ffc107;
+$danger: #dc3545;
+$secondary: #6c757d;
+$light: #f8f9fa;
+$dark: #212529;
+$border: #dee2e6;
+$radius: 0.75rem;
+
+/* --------------------------------------------------
+   Container
+-------------------------------------------------- */
+.findings-container {
+  padding: 1rem;
+  max-width: 100%;
+  background: $light;
+  min-height: calc(100vh - 4rem);
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: $dark;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $secondary;
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+/* --------------------------------------------------
+   Table (Desktop default)
+-------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+  thead {
+    background: $primary;
+    color: white;
+
+    th {
+      padding: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $border;
+
+      &:hover {
+        background: rgba($primary, 0.04);
+      }
+    }
+
+    td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      color: $dark;
+      vertical-align: middle;
+    }
+  }
+}
+
+/* --------------------------------------------------
+   Sync Status
+-------------------------------------------------- */
+span {
+  &.synced {
+    color: $success;
+    font-weight: bold;
+  }
+
+  &:not(.synced) {
+    color: $warning;
+    font-weight: bold;
+  }
+}
+
+/* --------------------------------------------------
+   Mobile-first Card View
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: $radius;
+    padding: 0.75rem;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  tbody td {
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+
+    &::before {
+      content: attr(data-label);
+      font-weight: 600;
+      color: $secondary;
+    }
+  }
+}
+
+/* --------------------------------------------------
+   Floating Action Button (PWA-style)
+-------------------------------------------------- */
+button {
+  border: none;
+  background: $primary;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  border-radius: 2rem;
+  //box-shadow: 0 6px 14px rgba(13, 110, 253, 0.4);
+  cursor: pointer;
+  z-index: 1000;
+
+  &:hover {
+    background: darken($primary, 5%);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+ 
+}
+
+
+ .newBtn {
+    // 1. Positioning logic
+    position: fixed;
+    bottom: 12px; // Distance from bottom
+    left: 14px;  // Distance from right
+    z-index: 1000; // Ensure it stays above form content
+
+    // 2. Visual Style (Circular FAB style)
+    // width: 56px;
+    height: 56px;
+    border-radius: 2rem;
+    background-color: #2563eb;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
+    
+    // 3. Icon size adjustment
+    font-size: 15px;
+
+    &:active {
+      background-color: #1d4ed8;
+      transform: scale(0.9) translateY(2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+  }

@@ -1,0 +1,67 @@
+<section class="findings-container">
+
+  <h2>Audit Findings</h2>
+
+  @if (loading()) {
+  <p class="text-muted text-center">Loading findings...</p>
+  }
+
+  @if (!loading() && findings().length === 0) {
+  <p class="text-muted text-center">No findings recorded.</p>
+  }
+
+  <table *ngIf="findings().length > 0" class="table-findings">
+    <thead>
+      <tr>
+        <th>Audit ID</th>
+        <th>Findings Type</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Created On</th>
+        <th>Synced</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let f of findings()">
+        <td data-label="Audit ID">
+          {{ f.auditId }}
+        </td>
+
+        <td data-label="Finding Type">
+          {{ f.findingsType }}
+        </td>
+
+        <td data-label="Severity">
+          {{ f.severity }}
+        </td>
+
+        <td data-label="Status">
+          {{ f.status }}
+        </td>
+
+        <td data-label="Created On">
+          {{ f.createdOn | date:'short' }}
+        </td>
+
+        <td data-label="Synced">
+          <span [class.synced]="f.isSynced">
+            {{ f.isSynced ? '✔' : '⏳' }}
+          </span>
+        </td>
+        <td>
+          <button type="button" class="btnClose"  (click)="removeFindings(f.id)">           
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- Floating Action Button -->
+<button type="button" class="newBtn" (click)="goToNewFinding()">
+  + New Finding
+</button>

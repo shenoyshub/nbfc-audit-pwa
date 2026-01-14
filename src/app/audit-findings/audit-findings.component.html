@@ -1,0 +1,107 @@
+<div class="form-container">
+  <button type="button" class="btn-close-floating" (click)="closeForm()">
+    ✕
+  </button>
+<form class="finding-form" [formGroup]="findingsForm" (ngSubmit)="saveFindings()">
+    <div class="form-group">
+    <label for="findingsType">Audit ID</label>
+   
+  <input 
+   (change)="this.handleFormInputChanges()"
+  type="text" 
+  id="auditId" 
+  title="Audit ID"
+  [value]="auditId"
+  formControlName="auditId" 
+  class="form-control" 
+  />
+  </div>
+
+  <div class="form-group">
+    <label for="findingsType">Findings Type</label>
+    <div class="select-wrapper">
+      <select
+      (change)="this.handleFormInputChanges()"
+        id="findingsType"        
+        title="Findings Type"
+        formControlName="findingsType"
+        class="form-control">
+        <option value=""  selected>-- Select Type --</option>
+        <option *ngFor="let t of findingsTypes" [value]="t.code">
+          {{ t.description }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="severity">Severity</label>
+    <div class="select-wrapper">
+      <select
+      (change)="this.handleFormInputChanges()"
+        id="severity"
+        formControlName="severity"
+        class="form-control">
+        <option value=""  selected>-- Select Severity --</option>
+        <option *ngFor="let s of severities" [value]="s.code">
+          {{ s.description }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="observations">Observations</label>
+    <select
+    (change)="this.handleFormInputChanges()"
+      id="observations"
+      formControlName="observations"
+      class="form-control"
+      multiple>
+      <option *ngFor="let s of observations" [value]="s.code">
+        {{ s.description }}
+      </option>
+    </select>
+    <small class="hint">Tap multiple items to select</small>
+  </div>
+
+  <div class="form-group">
+    <label for="correctiveAction">Corrective Action</label>
+    <textarea
+    (change)="this.handleFormInputChanges()"
+      id="correctiveActions"
+      formControlName="correctiveAction"
+      class="form-control"
+      rows="4"
+      placeholder="Describe corrective action to be taken">
+    </textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="status">Status</label>
+    <div class="select-wrapper">
+      <select
+      (change)="this.handleFormInputChanges()"
+        id="status"
+        formControlName="status"
+        class="form-control">
+        <option *ngFor="let st of statuses" [value]="st.code">
+          {{ st.description }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="btn-save"
+    (click)="saveFindings()">
+  
+    💾 Save Finding
+  </button>
+
+</form>
+
+
+
+</div>

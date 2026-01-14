@@ -31,4 +31,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist/nbfc-audit-pwa
+          publish_dir: dist/nbfc-audit-pwa/browser

@@ -9,6 +9,9 @@ $secondary: #6c757d;
 $light: #f8f9fa;
 $dark: #212529;
 $border: #dee2e6;
+$app_clr : #004f98;
+$bg-app: #f8fafc;           // Off-white background
+
 $radius: 0.75rem;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* --------------------------------------------------
@@ -181,3 +184,27 @@ button {
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
   }
+.btn-save {
+  margin: 8px;
+  padding: 16px;
+  background-color: $app_clr;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 1000;
+  float: right;
+  &:hover{
+    border: 1px solid;
+    border-color: $app_clr;
+    background-color: $bg-app;
+    color: $app_clr;
+  }
+}

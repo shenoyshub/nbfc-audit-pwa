@@ -3,8 +3,10 @@
   <button type="button" class="btn_close_floating" (click)="closeForm()">
     ✕
   </button>
-<form class="finding-form" [formGroup]="findingsForm" (ngSubmit)="saveFindings()">
-  <h2 class="mb_1 mt_1">New Findings</h2>
+<form  [formGroup]="findingsForm" (ngSubmit)="saveFindings()">
+  <div class="finding-form">
+
+      <h2 class="mb_1 mt_1">New Findings</h2>
 
     <div class="grid-container">
   <div class="grid-item">
@@ -119,6 +121,9 @@
   </div>
     </div>
     </div>
+
+  </div>
+
 
 
 

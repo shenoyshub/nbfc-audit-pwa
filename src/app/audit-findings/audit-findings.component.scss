@@ -1,14 +1,29 @@
 // Variables for consistency
 $primary-color: #2563eb;    // Professional Blue
 $success-color: #16a34a;    // Save Green
-$border-color: #e2e8f0;     // Light Gray
+$border-color: #adb2b8;     // Light Gray
 $text-main: #1e293b;        // Dark Slate
 $bg-app: #f8fafc;           // Off-white background
+$mobile: 767px;
+$laptop: 1024px;
+.form-container{
+  width:calc(100% - 32px);
+  margin: auto;
+
+}
+.mb_1{
+  margin-bottom: 4px;
+}
+.mt_1{
+  margin-top: 4px;
+}
 
 .finding-form {
   padding: 16px;
   padding-bottom: 100px; // Space so content isn't hidden by sticky button
   background-color: $bg-app;
+  border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   min-height: 100vh;
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
@@ -24,9 +39,11 @@ $bg-app: #f8fafc;           // Off-white background
       margin-bottom: 6px;
       margin-left: 2px;
     }
-
+input[type="text"] {
+    max-width: 92%;
+}
     .form-control {
-      appearance: none; // Removes default mobile styling
+      // appearance: none;
       width: 100%;
       padding: 12px 16px;
       font-size: 16px; // Crucial: Prevents iOS auto-zoom on focus
@@ -51,12 +68,12 @@ $bg-app: #f8fafc;           // Off-white background
     select[multiple] {
       min-height: 120px;
       padding: 8px;
-      
+
       option {
         padding: 10px;
         border-bottom: 1px solid $bg-app;
         border-radius: 4px;
-        
+
         &:checked {
           background-color: rgba($primary-color, 0.1) linear-gradient(0deg, rgba($primary-color, 0.1) 0%, rgba($primary-color, 0.1) 100%);
           color: $primary-color;
@@ -75,15 +92,24 @@ $bg-app: #f8fafc;           // Off-white background
 }
 
 // Sticky Save Button Container
-.btn-save {
+.btn_container{
   position: fixed;
-  bottom: 0;
+   bottom: 0;
   left: 0;
   right: 0;
-  
+  width:calc(100% - 32px);
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: auto;
+}
+.btn-save {
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+
   // Styling the button itself
-  width: calc(100% - 32px); // Margin on sides
-  margin: 16px;
+  // width: calc(100% - 32px);
+  margin: 8px;
   padding: 16px;
   background-color: $success-color;
   color: white;
@@ -98,17 +124,23 @@ $bg-app: #f8fafc;           // Off-white background
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   z-index: 1000;
-
+  float: right;
+  &:hover{
+    border: 1px solid;
+    border-color: $success-color;
+    background-color: $bg-app;
+    color: $success-color;
+  }
+}
   .form-container {
   position: relative; // Required so the button stays relative to this box
   padding-top: 40px;  // Give space so the button doesn't overlap labels
 }
-
-.btn-close-floating {
+.btn_close_floating{
   position: absolute;
   top: 12px;
-  right: 12px;
-  
+  right: 0;
+
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -124,119 +156,61 @@ $bg-app: #f8fafc;           // Off-white background
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 10;
   transition: background-color 0.2s;
+   &:hover {
+    background-color: #be0101;
+    transform: scale(1.1);
+    color: #fff;
+  }
 
   &:active {
     background-color: #e2e8f0;
     transform: scale(0.95);
   }
 }
-  &:active {
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
+
+.grid-container {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+
+  // Default (mobile-first)
+  grid-template-columns: 1fr;
+
+  // Laptop & above
+  @media (min-width: $laptop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+.grid-container-two {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+
+  // Default (mobile-first)
+  grid-template-columns: 1fr;
+
+  // Laptop & above
+  @media (min-width: $laptop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Optional grid items styling
+.grid-item {
+
+  padding: 8px;
+
+}
+
+
+
+
 
 .btn-close-floating {
   position: absolute;
   top: 12px;
   right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
 
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-    transform: scale(0.98);
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
-
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
-
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-    filter: brightness(0.9);
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
-
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
-
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-  }
-  .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
-
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -263,12 +237,45 @@ $bg-app: #f8fafc;           // Off-white background
   position: relative; // Required so the button stays relative to this box
   padding-top: 40px;  // Give space so the button doesn't overlap labels
 }
+
+.btn-close-floating {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f1f5f9; // Light gray background
+  color: #64748b;            // Slate gray icon
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  transition: background-color 0.2s;
+
+  &:active {
+    background-color: #e2e8f0;
+    transform: scale(0.95);
+  }
+}
+
+  .form-container {
+  position: relative; // Required so the button stays relative to this box
+  padding-top: 56px;  // Give space so the button doesn't overlap labels
+}
+
 
 .btn-close-floating {
   position: fixed;
   top: 12px;
   right: 12px;
-  
+
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -290,111 +297,15 @@ $bg-app: #f8fafc;           // Off-white background
     transform: scale(0.95);
   }
 }
-  &:disabled {
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
 
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
 
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-    background-color: #cbd5e1;
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
-
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
-
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-    box-shadow: none;
-    .form-container {
-  position: relative; // Required so the button stays relative to this box
-  padding-top: 40px;  // Give space so the button doesn't overlap labels
-}
-
-.btn-close-floating {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background-color: #f1f5f9; // Light gray background
-  color: #64748b;            // Slate gray icon
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
-  transition: background-color 0.2s;
-
-  &:active {
-    background-color: #e2e8f0;
-    transform: scale(0.95);
-  }
-}
-  }
-}
 .btn-close{
   font-size: 18px;
   font-weight: bold;
   position: fixed;
   top: 5px;
   right: 5px;
-  
+
   // Styling the button itself
   width: calc(100% - 32px); // Margin on sides
   margin: 16px;

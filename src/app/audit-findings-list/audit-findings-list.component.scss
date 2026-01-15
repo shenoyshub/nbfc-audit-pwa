@@ -10,7 +10,7 @@ $light: #f8f9fa;
 $dark: #212529;
 $border: #dee2e6;
 $radius: 0.75rem;
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 /* --------------------------------------------------
    Container
 -------------------------------------------------- */
@@ -25,6 +25,7 @@ $radius: 0.75rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: $dark;
+     font-family: "Roboto", sans-serif;
   }
 
   p {
@@ -152,7 +153,7 @@ button {
   &:active {
     transform: scale(0.97);
   }
- 
+
 }
 
 
@@ -170,7 +171,7 @@ button {
     background-color: #2563eb;
     color: white;
     box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.4);
-    
+
     // 3. Icon size adjustment
     font-size: 15px;
 

@@ -1,6 +1,30 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+
+    <app-leftsidebar></app-leftsidebar>
+  </mat-sidenav>
+
+ <mat-sidenav-content class="position-relative">
+  <div class="container-fluid">
+       <mat-toolbar color="primary  d-flex  ">
+        <h2 class="py-2 flex-grow-1 sub_title ">Auditor Findings</h2>
+       <span class="spacer"></span>
+      <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+      <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+    </mat-toolbar>
 <section class="findings-container">
 
-  <h2>Audit Findings</h2>
+  <div class="col-md-12 d-flex flex-row">
+              <p class=" flex-grow-1" >Add auditor findings .</p>
+               <button   class="btn-save"  (click)="goToNewFinding()">
+  <mat-icon>
+add
+</mat-icon> New Finding
+</button>
+
+            </div>
 
   @if (loading()) {
   <p class="text-muted text-center">Loading findings...</p>
@@ -62,6 +86,8 @@
 </section>
 
 <!-- Floating Action Button -->
-<button type="button" class="newBtn" (click)="goToNewFinding()">
+<!-- <button type="button" class="newBtn" (click)="goToNewFinding()">
   + New Finding
-</button>
+</button> -->
+</div>
+</mat-sidenav-content>

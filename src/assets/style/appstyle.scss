@@ -15,6 +15,9 @@ $radius-sm: 4px;
 $radius-md: 8px;
 $clrash : #3c3c3c;
 $blue : rgb(37 99 235);
+$bg-app: #f8fafc;           // Off-white background
+$app_clr : #004f98;
+$light_ash : #EFECE3;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 html {
@@ -50,11 +53,16 @@ select {
   border: none;
   outline: none;
 }
+.sidenav {
+  width: 240px !important;
+}
 
 button {
   cursor: pointer;
 }
-
+.txt_blue{
+  color: $blue;
+}
 .card_title{
   color: $clrash;
   font-size: 24px !important;
@@ -71,9 +79,30 @@ button {
   font-size: 16px !important;
   font-weight: 400 !important;
 }
+.card_title_xs{
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+.card_sub_title_xs{
+   color: $clrash !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
 .mat-mdc-card{
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2) !important;
   background-color: $clr_white;
+}
+.btn_sml{
+  color: $clrash;
+  opacity: 0;
+  cursor: pointer;
+
+}
+.btn_sml:hover {
+  color: $blue;
+}
+.card_app_btn_div:hover .btn_sml {
+  opacity: 1;
 }
 // -------------------------------
 .sidenav {
@@ -179,8 +208,68 @@ button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   background-color: $clr_white !important;
 }
+.btn-save {
+
+  margin: 8px;
+  padding: 8px 16px;
+  background-color: $app_clr;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 1000;
+  float: right;
+  &:hover{
+    border: 1px solid;
+    border-color: $app_clr;
+    background-color: $bg-app;
+    color: $app_clr;
+  }
+}
+// formstyle
+// .add-form-menu .mat-mdc-menu-content {
+//   padding: 16px;
+//   min-width: 300px;
+// }
+
+// .add-form-menu .menu-form-field {
+//   width: 100%;
+//   display: block;
+//   margin-bottom: 8px;
+// }
+
+// .add-form-menu .menu-form-actions {
+//   display: flex;
+//   justify-content: flex-end;
+//   gap: 8px;
+//   padding-top: 8px;
+// }
 
 // Responsive adjustments
+.divdropdown-wrapper{
+   overflow: hidden;
+  height: 0;
+  opacity: 0;
+   transform: translateY(-8px);
+  transition:
+    max-height 300ms ease,
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+.open_divdropdown {
+
+  // height: auto;
+  opacity: 1 !important;
+  height: auto;
+  transform: translateY(0);
+}
 @media (max-width: 768px) {
   .sidenav {
     mat-toolbar {
@@ -191,6 +280,49 @@ button {
       padding: 0 16px;
     }
   }
+}
+// matTable
+.filter-field {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 16px;
+}
+
+/* Full screen container */
+.table-wrapper {
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* Table takes full available width */
+.full-width-table {
+  width: 100%;
+  min-width: 100%;
+  table-layout: fixed;
+  display: table;
+}
+
+/* Column distribution for perfect fit */
+
+
+/* Ensure cells don't overflow */
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px 4px;
+}
+
+.tblTh{
+  background-color: $light_ash !important;
+  vertical-align: middle;
+}
+.mdc-data-table__cell{
+  vertical-align: middle !important;
 }
 
 // Optional: Add subtle animation to the entire sidenav

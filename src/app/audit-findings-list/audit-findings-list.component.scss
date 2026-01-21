@@ -31,12 +31,12 @@ $radius: 0.75rem;
      font-family: "Roboto", sans-serif;
   }
 
-  p {
-    font-size: 0.9rem;
-    color: $secondary;
-    margin: 1rem 0;
-    text-align: center;
-  }
+  // p {
+  //   font-size: 0.9rem;
+  //   color: $secondary;
+  //   margin: 1rem 0;
+  //   text-align: center;
+  // }
 }
 
 /* --------------------------------------------------
@@ -138,26 +138,26 @@ span {
 /* --------------------------------------------------
    Floating Action Button (PWA-style)
 -------------------------------------------------- */
-button {
-  border: none;
-  background: $primary;
-  color: white;
-  padding: 0.75rem 1.25rem;
-  font-size: 0.9rem;
-  border-radius: 2rem;
-  //box-shadow: 0 6px 14px rgba(13, 110, 253, 0.4);
-  cursor: pointer;
-  z-index: 1000;
+// button {
+//   border: none;
+//   background: $primary;
+//   color: white;
+//   padding: 0.75rem 1.25rem;
+//   font-size: 0.9rem;
+//   border-radius: 2rem;
 
-  &:hover {
-    background: darken($primary, 5%);
-  }
+//   cursor: pointer;
+//   z-index: 1000;
 
-  &:active {
-    transform: scale(0.97);
-  }
+//   &:hover {
+//     background: darken($primary, 5%);
+//   }
 
-}
+//   &:active {
+//     transform: scale(0.97);
+//   }
+
+// }
 
 
  .newBtn {
@@ -184,27 +184,27 @@ button {
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
   }
-.btn-save {
-  margin: 8px;
-  padding: 16px;
-  background-color: $app_clr;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-  z-index: 1000;
-  float: right;
-  &:hover{
-    border: 1px solid;
-    border-color: $app_clr;
-    background-color: $bg-app;
-    color: $app_clr;
-  }
-}
+// .btn-save {
+//   margin: 8px;
+//   padding: 16px;
+//   background-color: $app_clr;
+//   color: white;
+//   border: none;
+//   border-radius: 12px;
+//   font-size: 1rem;
+//   font-weight: 700;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 8px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+//   cursor: pointer;
+//   z-index: 1000;
+//   float: right;
+//   &:hover{
+//     border: 1px solid;
+//     border-color: $app_clr;
+//     background-color: $bg-app;
+//     color: $app_clr;
+//   }
+// }

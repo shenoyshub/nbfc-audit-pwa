@@ -26,6 +26,14 @@ export const routes: Routes = [
   {
     path : 'audit-types', loadComponent: ()=> import('./audit-types/audit-types.component').then(m=>m.AuditTypesComponent)
   },
+  {
+    path : 'auditors',loadComponent:()=>import('./createauditors/createauditors.component').then(m=>m.CreateauditorsComponent)
+  }
+  ,
+   {
+    path : 'audit-schedules',loadComponent:()=>import('./audit-schedules/audit-schedules.component').then(m=>m.AuditSchedulesComponent)
+  }
+  ,
 
   {
     path: '**',

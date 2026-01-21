@@ -1,3 +1,269 @@
-<p>
-  audit-schedules works!
-</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+
+    <app-leftsidebar></app-leftsidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <mat-toolbar color="primary  d-flex  ">
+        <h2 class="py-2 flex-grow-1 sub_title ">Audit Schedules</h2>
+        <span class="spacer"></span>
+        <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+        <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+      </mat-toolbar>
+
+
+      <div class="dashboard-content">
+        <div class="container-fluid">
+          <div class="row py-2">
+
+            <div class="col-md-12 d-flex flex-row">
+              <p class=" flex-grow-1" >Plan, track, and assign auditors to specific audit cycles.</p>
+               <button   class="btn-save" (click)="onAddClick()">
+  <mat-icon>
+add
+</mat-icon> New Schedule
+</button>
+
+            </div>
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12 py-2 ">
+                 <mat-card class="stat-card  py-2 card_app card_app_btn_div divdropdown-wrapper"  [class.open_divdropdown]="showForm" >
+                <mat-card-header >
+               <div class="w-100" >
+  <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12">
+                <h5 class="card_title_xs pb-2" >Audit Schedule</h5>
+
+        </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Zone</mat-label>
+  <mat-select formControlName="Zone">
+    <mat-option value="">Select Zone</mat-option>
+    <mat-option value="electronics">Hyderabad</mat-option>
+  </mat-select>
+</mat-form-field>
+
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Branch</mat-label>
+  <mat-select formControlName="Branch">
+    <mat-option value="">Select Branch</mat-option>
+    <mat-option value="electronics">Akkulam</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Audit Type</mat-label>
+  <mat-select formControlName="AuditType">
+    <mat-option value="">Select Audit Type</mat-option>
+    <mat-option value="electronics">Internal Audit </mat-option>
+    <mat-option value="clothing">OPerational Audit</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Auditee</mat-label>
+  <mat-select formControlName="Auditee">
+    <mat-option value="">Select Auditee</mat-option>
+    <mat-option value="electronics">Internal Audit </mat-option>
+    <mat-option value="clothing">OPerational Audit</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Lead Auditor</mat-label>
+  <mat-select formControlName="LeadAuditor">
+    <mat-option value="">Select Lead Auditor</mat-option>
+    <mat-option value="electronics">Lead Auditor</mat-option>
+    <mat-option value="clothing">Regular Auditor</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Audit Associates</mat-label>
+  <mat-select formControlName="AuditAssociates">
+    <mat-option value="">Select Associates</mat-option>
+    <mat-option value="electronics">Lead Auditor</mat-option>
+    <mat-option value="clothing">Regular Auditor</mat-option>
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100" >
+  <mat-label>Review From</mat-label>
+  <input matInput [matDatepicker]="ReviewFrom">
+  <mat-datepicker-toggle matSuffix [for]="ReviewFrom"></mat-datepicker-toggle>
+  <mat-datepicker #ReviewFrom></mat-datepicker>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100" >
+  <mat-label>Review To</mat-label>
+  <input matInput [matDatepicker]="ReviewTo">
+  <mat-datepicker-toggle matSuffix [for]="ReviewTo"></mat-datepicker-toggle>
+  <mat-datepicker #ReviewTo></mat-datepicker>
+</mat-form-field>
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100" >
+  <mat-label>Schedule Start</mat-label>
+  <input matInput [matDatepicker]="ScheduleStart">
+  <mat-datepicker-toggle matSuffix [for]="ScheduleStart"></mat-datepicker-toggle>
+  <mat-datepicker #ScheduleStart></mat-datepicker>
+</mat-form-field>
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100" >
+  <mat-label>Schedule End</mat-label>
+  <input matInput [matDatepicker]="ScheduleEnd">
+  <mat-datepicker-toggle matSuffix [for]="ScheduleEnd"></mat-datepicker-toggle>
+  <mat-datepicker #ScheduleEnd></mat-datepicker>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Checklist</mat-label>
+  <mat-select formControlName="AuditType">
+    <mat-option value="">Select Checklist</mat-option>
+    <mat-option value="electronics">Hyderabad</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+
+       <!-- <div class="col-md-4 col-lg-3">
+          <mat-slide-toggle  color="primary">
+   Is active
+</mat-slide-toggle>
+       </div> -->
+
+     </div>
+      </div>
+
+    <button class="btn-save"ype="submit" (click)="onSubmit()"   > <mat-icon>save</mat-icon> Save</button>
+  </form>
+</div>
+</mat-card-header>
+</mat-card>
+            </div>
+
+            <div class="col-sm-12  my-2">
+              <mat-card class="stat-card  py-4  card_app  px-4 " >
+                 <mat-form-field appearance="outline" class="filter-field">
+  <mat-label>Search</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search..">
+</mat-form-field>
+<div class="table-wrapper">
+  <mat-table [dataSource]="dataSource" matSort class="  full-width-table">
+  <ng-container matColumnDef="audittype">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Audit Type</th>
+    <td mat-cell *matCellDef="let element">{{element.audittype}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="period">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Period </th>
+    <td mat-cell *matCellDef="let element">{{element.period}}</td>
+  </ng-container>
+  <ng-container matColumnDef="auditor">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Auditor</th>
+    <td mat-cell *matCellDef="let element">{{element.auditor}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="checklist">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Checklist</th>
+    <td mat-cell *matCellDef="let element">{{element.checklist}}</td>
+  </ng-container>
+    <ng-container matColumnDef="zone">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Zone</th>
+    <td mat-cell *matCellDef="let element">{{element.zone}}</td>
+  </ng-container>
+    <ng-container matColumnDef="branch">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Branch</th>
+    <td mat-cell *matCellDef="let element">{{element.branch}}</td>
+  </ng-container>
+    <!-- <ng-container matColumnDef="auditor">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Auditor</th>
+    <td mat-cell *matCellDef="let element">${{element.auditor}}</td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="actions">
+    <th class="tblTh" mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="primary">Edit</button>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</mat-table>
+
+</div>
+
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+              </mat-card>
+
+
+
+
+            </div>
+
+            <!-- <div class="col-sm-12 col-md-6 col-lg-4  my-2">
+              <mat-card class="stat-card  py-1 card_app card_app_btn_div">
+                <mat-card-header class="d-flex flex-column">
+                  <div class="d-flex flex-row-reverse pb-1">
+                     <span class="badge bg-success float-right  ">Active</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
+                        class="mb-0  ">person</mat-icon> </div>
+                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
+                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  </div>
+                  <div class="pb-3">
+                    <mat-card-title class="card_title_xs">Arjun Mehta</mat-card-title>
+                    <mat-card-subtitle class="card_sub_title_xs ">102365 </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Zone </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Branch </mat-card-subtitle>
+
+                  </div>
+                </mat-card-header>
+              </mat-card>
+
+            </div> -->
+
+
+
+          </div>
+          <div class="row">
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

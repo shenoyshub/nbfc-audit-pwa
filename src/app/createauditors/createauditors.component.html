@@ -1,0 +1,207 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+
+    <app-leftsidebar></app-leftsidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <mat-toolbar color="primary  d-flex  ">
+        <h2 class="py-2 flex-grow-1 sub_title ">Auditor Management</h2>
+        <span class="spacer"></span>
+        <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+        <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+      </mat-toolbar>
+
+
+      <div class="dashboard-content">
+        <div class="container-fluid">
+          <div class="row py-2">
+
+            <div class="col-md-12 d-flex flex-row">
+              <p class=" flex-grow-1" >Manage staff, assign roles, and set specializations for auditors.</p>
+               <button   class="btn-save" (click)="showForm = !showForm">
+  <mat-icon>
+add
+</mat-icon> Add Auditor
+</button>
+
+            </div>
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12 py-2 ">
+                 <mat-card class="stat-card  py-2 card_app card_app_btn_div" *ngIf="showForm">
+                <mat-card-header >
+               <div class="w-100" >
+  <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+      <div class="container-fluid">
+        <div class="row">
+       <div class="col-md-4 col-lg-3">
+          <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Auditor</mat-label>
+      <input formControlName="AuditorName" matInput />
+    </mat-form-field>
+
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>User ID</mat-label>
+  <mat-select formControlName="UserID">
+    <mat-option value="">Select User ID</mat-option>
+    <mat-option value="electronics">1111</mat-option>
+    <mat-option value="clothing">2222</mat-option>
+    <mat-option value="books">Year</mat-option>
+  </mat-select>
+</mat-form-field>
+
+       </div>
+       <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Audit Type</mat-label>
+  <mat-select formControlName="AuditType">
+    <mat-option value="">Select Audit Type</mat-option>
+    <mat-option value="electronics">Internal Audit </mat-option>
+    <mat-option value="clothing">OPerational Audit</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Role</mat-label>
+  <mat-select formControlName="Role">
+    <mat-option value="">Select Role</mat-option>
+    <mat-option value="electronics">Lead Auditor</mat-option>
+    <mat-option value="clothing">Regular Auditor</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Zone</mat-label>
+  <mat-select formControlName="AuditType">
+    <mat-option value="">Select Zone</mat-option>
+    <mat-option value="electronics">Hyderabad</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+        <div class="col-md-4 col-lg-3">
+        <mat-form-field appearance="outline" class="menu-form-field w-100">
+  <mat-label>Branch</mat-label>
+  <mat-select formControlName="Branch">
+    <mat-option value="">Select Branch</mat-option>
+    <mat-option value="electronics">Akkulam</mat-option>
+
+  </mat-select>
+</mat-form-field>
+       </div>
+       <div class="col-md-4 col-lg-3">
+          <mat-slide-toggle  color="primary">
+   Is active
+</mat-slide-toggle>
+       </div>
+
+     </div>
+      </div>
+
+    <button class="btn-save"ype="submit" [disabled]="auditForm.invalid"  > <mat-icon>save</mat-icon> Save</button>
+  </form>
+</div>
+</mat-card-header>
+</mat-card>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
+              <mat-card class="stat-card  py-1 card_app card_app_btn_div">
+                <mat-card-header class="d-flex flex-column">
+                  <div class="d-flex flex-row-reverse pb-1">
+                     <span class="badge bg-success float-right  ">Active</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
+                        class="mb-0  ">person</mat-icon> </div>
+                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
+                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  </div>
+                  <div class="pb-3">
+                    <mat-card-title class="card_title_xs">Arjun Mehta</mat-card-title>
+                    <mat-card-subtitle class="card_sub_title_xs ">102365 </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Zone </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Branch </mat-card-subtitle>
+
+                  </div>
+                </mat-card-header>
+              </mat-card>
+
+            </div>
+           <div class="col-sm-12 col-md-6 col-lg-4  my-2">
+              <mat-card class="stat-card  py-1 card_app card_app_btn_div">
+                <mat-card-header class="d-flex flex-column">
+                  <div class="d-flex flex-row-reverse pb-1">
+                     <span class="badge bg-success float-right  ">Active</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
+                        class="mb-0  ">person</mat-icon> </div>
+                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
+                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  </div>
+                  <div class="pb-3">
+                    <mat-card-title class="card_title_xs">Arjun Mehta</mat-card-title>
+                    <mat-card-subtitle class="card_sub_title_xs ">102365 </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Zone </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Branch </mat-card-subtitle>
+
+                  </div>
+                </mat-card-header>
+              </mat-card>
+
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
+              <mat-card class="stat-card  py-1 card_app card_app_btn_div">
+                <mat-card-header class="d-flex flex-column">
+                  <div class="d-flex flex-row-reverse pb-1">
+                     <span class="badge bg-success float-right  ">Active</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
+                        class="mb-0  ">person</mat-icon> </div>
+                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
+                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  </div>
+                  <div class="pb-3">
+                    <mat-card-title class="card_title_xs">Arjun Mehta</mat-card-title>
+                    <mat-card-subtitle class="card_sub_title_xs ">102365 </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Zone </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Branch </mat-card-subtitle>
+
+                  </div>
+                </mat-card-header>
+              </mat-card>
+
+            </div>
+
+
+
+          </div>
+          <div class="row">
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

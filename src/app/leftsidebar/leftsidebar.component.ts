@@ -40,4 +40,13 @@ export class LeftsidebarComponent implements OnInit {
   auditType(){
     this.router.navigate(['/audit-types']);
   }
+  auditors(){
+    this.router.navigate(['/auditors']);
+  }
+  auditSchedules(){
+    this.router.navigate(['/audit-schedules']);
+  }
+   auditFindings(){
+    this.router.navigate(['/audit-findings-list']);
+  }
 }

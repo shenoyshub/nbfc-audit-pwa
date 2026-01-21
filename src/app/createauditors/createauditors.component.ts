@@ -14,11 +14,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LeftsidebarComponent } from '../leftsidebar/leftsidebar.component';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @Component({
-  selector: 'app-audit-types',
-  templateUrl: './audit-types.component.html',
-  styleUrls: ['./audit-types.component.css'],
+  selector: 'app-createauditors',
+  templateUrl: './createauditors.component.html',
+  styleUrls: ['./createauditors.component.css'],
   standalone : true,
   imports: [
     CommonModule,
@@ -36,17 +36,23 @@ import { LeftsidebarComponent } from '../leftsidebar/leftsidebar.component';
     ReactiveFormsModule,
     MatSelectModule,
     LeftsidebarComponent,
+    MatSlideToggleModule
 
 ],
 })
-export class AuditTypesComponent implements OnInit {
-   auditForm : FormGroup;
+export class CreateauditorsComponent implements OnInit {
+
+  auditForm : FormGroup;
    showForm = false;
   constructor(private fb: FormBuilder) {
     this.auditForm  = this.fb.group({
-      audit_Type: ['', Validators.required],
-       audit_Frequency: ['', Validators.required],
-       audit_Branch : ['']
+      AuditorName: ['', Validators.required],
+       UserID: ['', Validators.required],
+       AuditType : [''],
+       Role : [''],
+       Zone : [''] ,
+       Branch : ['']
+
 
     });
    }

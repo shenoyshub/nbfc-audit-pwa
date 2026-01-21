@@ -4,10 +4,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuditFindings } from '../core/models/audit-findings';
 import { AuditFindingsStore } from '../core/services/audit-findings-store';
 import { v4 as uuidv4 } from 'uuid';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { LeftsidebarComponent } from "../leftsidebar/leftsidebar.component";
+import { MatIconModule } from '@angular/material/icon';
+
 @Component({
   selector: 'app-audit-findings-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatToolbarModule,MatButtonModule,MatSidenavModule ,LeftsidebarComponent , MatIconModule
+
+  ],
   templateUrl: './audit-findings-list.component.html',
   styleUrls: ['./audit-findings-list.component.scss']
 })

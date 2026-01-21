@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'audit-findings-list',
+    redirectTo: 'audit-dashboard',
     pathMatch: 'full'
   },
 
@@ -37,7 +37,7 @@ export const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'audit-findings-list'
+    redirectTo: 'audit-dashboard'
 
   }
 ];

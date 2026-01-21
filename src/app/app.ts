@@ -1,12 +1,12 @@
 import { SwUpdate } from '@angular/service-worker';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
+import { MatButtonModule } from '@angular/material/button'; // Import the module
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatButtonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

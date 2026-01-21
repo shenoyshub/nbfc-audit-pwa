@@ -19,6 +19,7 @@ import { oidcConfig } from './auth/oidc.config';
 import { provideStore } from '@ngrx/store';
 import { AppInitService } from './services/app-init.service';
 import { appInitFactory } from './factories/app-init.factory';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,8 +32,9 @@ export const appConfig: ApplicationConfig = {
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
-    }),
-    provideStore()
+    })
+    , provideStore()
+    , provideCharts(withDefaultRegisterables())
     // ,
 
     // // 👇 APP INITIALIZER

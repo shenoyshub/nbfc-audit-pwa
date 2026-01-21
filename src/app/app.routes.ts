@@ -20,9 +20,16 @@ export const routes: Routes = [
       import('./audit-findings/audit-findings.component')
         .then(m => m.AuditFindingsComponent)
   },
+  {
+    path : 'audit-dashboard', loadComponent: ()=> import('./auditdashboard/auditdashboard.component').then(m=>m.AuditdashboardComponent)
+  },
+  {
+    path : 'audit-types', loadComponent: ()=> import('./audit-types/audit-types.component').then(m=>m.AuditTypesComponent)
+  },
 
   {
     path: '**',
     redirectTo: 'audit-findings-list'
+
   }
 ];

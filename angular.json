@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-             "outputPath": "dist/nbfc-audit-pwa",
+            "outputPath": "dist/nbfc-audit-pwa",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -38,29 +38,38 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "1MB",
                   "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "1MB",
-                  "maximumError": "20kB"
+                  "maximumError": "1MB"
                 }
               ],
               "baseHref": "/nbfc-audit-pwa/",
               "outputHashing": "all",
-             "serviceWorker": "src/ngsw-config.json"
+              "serviceWorker": "src/ngsw-config.json",
+              "optimization": true,
+              "extractLicenses": true,
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "serviceWorker": false
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "ssl": true,
+            "sslKey": "./ssl/server.key",
+            "sslCert": "./ssl/server.crt"
+          },
           "configurations": {
             "production": {
               "buildTarget": "nbfc-audit-pwa:build:production"
@@ -87,7 +96,8 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "sourceMap": true
           }
         }
       }

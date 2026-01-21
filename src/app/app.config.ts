@@ -1,8 +1,24 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection, isDevMode } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+  isDevMode,
+  provideAppInitializer,
+  inject
+} from '@angular/core';
+
 import { provideRouter } from '@angular/router';
+import { provideServiceWorker } from '@angular/service-worker';
+
+import {
+  provideAuth
+} from 'angular-auth-oidc-client';
 
 import { routes } from './app.routes';
-import { provideServiceWorker } from '@angular/service-worker';
+import { oidcConfig } from './auth/oidc.config';
+import { provideStore } from '@ngrx/store';
+import { AppInitService } from './services/app-init.service';
+import { appInitFactory } from './factories/app-init.factory';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 export const appConfig: ApplicationConfig = {
@@ -10,15 +26,21 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    provideServiceWorker(
-      'ngsw-worker.js',
-      {
+    provideAuth({
+        config: oidcConfig
+    }),
+    provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
-      }
-    ),
-      provideCharts(withDefaultRegisterables())
+    })
+    , provideStore()
+    , provideCharts(withDefaultRegisterables())
+    // ,
 
-  ]
-
+    // // 👇 APP INITIALIZER
+    //  provideAppInitializer(() => {
+    //   const appInitService = inject(AppInitService);
+    // //   return appInitService.init();
+    // })
+]
 };

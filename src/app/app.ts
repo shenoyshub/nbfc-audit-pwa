@@ -1,6 +1,6 @@
+import { SwUpdate } from '@angular/service-worker';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
 import { MatButtonModule } from '@angular/material/button'; // Import the module
 
 @Component({

@@ -1,14 +1,18 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": [
-      "jasmine"
-    ]
+    "rootDir": "./src",              // <-- REQUIRED to fix TS6 warning
+    "outDir": "./out-tsc/spec",      // compiled test files go here
+    "target": "ES2022",              
+    "module": "NodeNext",            // required for Karma/Jasmine tests
+    "moduleResolution": "NodeNext",    // TypeScript 5+ recommended
+    "lib": ["ES2022", "DOM"],
+    "types": ["jasmine", "node"],    // for tests + Node globals
+    "strict": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ]
 }

@@ -7,14 +7,25 @@
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
-    },
+      "url": "https://localhost:4200/"//,
+      //"sourceMaps": true,
+      // "runtimeArgs": [
+      //   "--ignore-certificate-errors",
+      //   "--disable-web-security"
+      // ]
+    },   
+
     {
-      "name": "ng test",
-      "type": "chrome",
+      "name": "Build only (ng build)",
+      "type": "pwa-node",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "preLaunchTask": "npm: build",
+      "program": "${workspaceFolder}/node_modules/.bin/ng",
+      "args": ["version"],
+      "console": "internalConsole"
     }
+  
+
+
   ]
 }

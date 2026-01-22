@@ -29,7 +29,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LeftsidebarComponent implements OnInit {
   private router = inject(Router);
-
+   isExpanded = false;
+     toggleSideMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
   constructor() { }
 
   ngOnInit() {

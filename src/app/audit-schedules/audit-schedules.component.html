@@ -1,6 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+ <mat-sidenav mode="side" [opened]="true" class="sidenav" [ngClass]="{ expanded: isExpanded }">
+      <div class="d-flex w-100">
+         <mat-toolbar color="primary">Menu</mat-toolbar>
+            <div>
+              <button mat-icon-button class="d-block d-md-none" (click)="toggleSideMenu()"><mat-icon>cancel</mat-icon></button>
+            </div>
+
+      </div>
 
     <app-leftsidebar></app-leftsidebar>
   </mat-sidenav>
@@ -8,10 +14,13 @@
   <mat-sidenav-content>
     <div class="container-fluid">
       <mat-toolbar color="primary  d-flex  ">
+
         <h2 class="py-2 flex-grow-1 sub_title ">Audit Schedules</h2>
         <span class="spacer"></span>
         <button mat-icon-button><mat-icon>notifications</mat-icon></button>
         <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+          <span><button class="d-block d-md-none" mat-icon-button (click)="toggleSideMenu()"><mat-icon  >menu</mat-icon></button></span>
+
       </mat-toolbar>
 
 
@@ -174,29 +183,30 @@ add
   <mat-table [dataSource]="dataSource" matSort class="  full-width-table">
   <ng-container matColumnDef="audittype">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Audit Type</th>
-    <td mat-cell *matCellDef="let element">{{element.audittype}}</td>
+
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Audit Type :</span> {{element.audittype}}</td>
   </ng-container>
 
   <ng-container matColumnDef="period">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Period </th>
-    <td mat-cell *matCellDef="let element">{{element.period}}</td>
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Period :</span> {{element.period}}</td>
   </ng-container>
   <ng-container matColumnDef="auditor">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Auditor</th>
-    <td mat-cell *matCellDef="let element">{{element.auditor}}</td>
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Auditor :</span> {{element.auditor}}</td>
   </ng-container>
 
   <ng-container matColumnDef="checklist">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Checklist</th>
-    <td mat-cell *matCellDef="let element">{{element.checklist}}</td>
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Checklist :</span> {{element.checklist}}</td>
   </ng-container>
     <ng-container matColumnDef="zone">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Zone</th>
-    <td mat-cell *matCellDef="let element">{{element.zone}}</td>
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Zone :</span>{{element.zone}}</td>
   </ng-container>
     <ng-container matColumnDef="branch">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Branch</th>
-    <td mat-cell *matCellDef="let element">{{element.branch}}</td>
+    <td mat-cell *matCellDef="let element"><span class="d-block d-md-none txt_ash">Branch :</span> {{element.branch}}</td>
   </ng-container>
     <!-- <ng-container matColumnDef="auditor">
     <th class="tblTh" mat-header-cell *matHeaderCellDef mat-sort-header>Auditor</th>

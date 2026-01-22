@@ -41,7 +41,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 ],
 })
 export class CreateauditorsComponent implements OnInit {
-
+     isExpanded = false;
+     toggleSideMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
   auditForm : FormGroup;
    showForm = false;
   constructor(private fb: FormBuilder) {

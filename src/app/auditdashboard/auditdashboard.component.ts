@@ -34,7 +34,11 @@ import { LeftsidebarComponent } from "../leftsidebar/leftsidebar.component";
 ],
 })
 export class AuditdashboardComponent implements OnInit {
-
+    isExpanded = false;
+     toggleSideMenu() {
+      //  this.isExpanded =true;
+    this.isExpanded = !this.isExpanded;
+  }
   stats = [
     { title: 'Active Audit', value: '$24,500', icon: 'trending_up', color: '#2563eb' },
     { title: 'Completed', value: '1,240', icon: 'check', color: '#10b981 ' },

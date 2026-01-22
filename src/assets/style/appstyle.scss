@@ -56,12 +56,45 @@ select {
 .sidenav {
   width: 240px !important;
 }
+// .sidenav.expanded {
+//   width: 240px !important;
+// }
+.divider_menu::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  transform: translateY(-50%);
+}
+
+.divider_menu span {
+  position: relative;
+  background: #fff;   // same as page background
+  padding: 0 12px;
+  z-index: 1;
+   font-size: 14px;
+  font-weight: 600;
+  color: $app_clr;
+}
+.divider_menu {
+  position: relative;
+  text-align: left;
+  margin: 20px 0;
+
+
+}
 
 button {
   cursor: pointer;
 }
 .txt_blue{
   color: $blue;
+}
+.txt_ash{
+  color: $clrash;
 }
 .card_title{
   color: $clrash;
@@ -272,6 +305,8 @@ button {
 }
 @media (max-width: 768px) {
   .sidenav {
+  width: 0px !important;
+
     mat-toolbar {
       padding: 0 16px;
     }
@@ -280,6 +315,10 @@ button {
       padding: 0 16px;
     }
   }
+
+.sidenav.expanded {
+  width: 240px !important;
+}
 }
 // matTable
 .filter-field {

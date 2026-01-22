@@ -20,7 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./audit-findings-list.component.scss']
 })
 export class AuditFindingsListComponent implements OnInit {
-
+      isExpanded = false;
+     toggleSideMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
   private router = inject(Router);
 
   findings = signal<AuditFindings[]>([]);

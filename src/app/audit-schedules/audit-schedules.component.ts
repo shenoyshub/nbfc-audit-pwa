@@ -51,7 +51,10 @@ import { MatPaginator } from '@angular/material/paginator';
     ],
 })
 export class AuditSchedulesComponent implements OnInit {
-
+     isExpanded = false;
+     toggleSideMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
    auditForm : FormGroup;
    showForm = false;
     selectedDate: Date | null = null;

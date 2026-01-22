@@ -1,8 +1,28 @@
- <mat-nav-list>
+
+
+ <!-- <mat-sidenav mode="side" [opened]="true" class="sidenav" [ngClass]="{ expanded: isExpanded }">
+      <div class="d-flex w-100">
+         <mat-toolbar color="primary">Menu</mat-toolbar>
+            <div>
+              <button mat-icon-button class="d-block d-md-none" (click)="toggleSideMenu()"><mat-icon>cancel</mat-icon></button>
+            </div>
+
+      </div> -->
+
+<mat-nav-list>
       <a mat-list-item class=" sidebaritem"  (click)="auditDashboard()" ><mat-icon>dashboard</mat-icon>Dashboard</a>
+       <p class=" divider_menu "><span>Audit Planning</span></p>
       <a mat-list-item class=" sidebaritem" (click)="auditType()"  ><mat-icon>settings</mat-icon> Audit Types</a>
       <a mat-list-item  class=" sidebaritem" (click)="auditors()" ><mat-icon>group</mat-icon> Auditors</a>
       <a mat-list-item  class=" sidebaritem"><mat-icon>playlist_add_check</mat-icon> Checklist</a>
+       <p class=" divider_menu "><span>Audit Execution</span></p>
+
       <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>event</mat-icon> Schedules</a>
+      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>query_stats</mat-icon> Audit Review</a>
+       <p class=" divider_menu "><span>Audit Closure</span></p>
+
       <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>content_paste_search</mat-icon> Audit Findings</a>
+      <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>note_stack</mat-icon> Audit Reports</a>
     </mat-nav-list>
+    <!-- </mat-sidenav> -->
+

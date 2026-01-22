@@ -1,7 +1,13 @@
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
-    <mat-toolbar color="primary">Menu</mat-toolbar>
+  <mat-sidenav mode="side" [opened]="true" class="sidenav" [ngClass]="{ expanded: isExpanded }">
+      <div class="d-flex w-100">
+         <mat-toolbar color="primary">Menu</mat-toolbar>
+            <div>
+              <button mat-icon-button class="d-block d-md-none" (click)="toggleSideMenu()"><mat-icon>cancel</mat-icon></button>
+            </div>
+
+      </div>
 
     <app-leftsidebar></app-leftsidebar>
   </mat-sidenav>
@@ -10,9 +16,11 @@
   <div class="container-fluid">
        <mat-toolbar color="primary  d-flex  ">
         <h2 class="py-2 flex-grow-1 sub_title ">Auditor Findings</h2>
-       <span class="spacer"></span>
+
       <button mat-icon-button><mat-icon>notifications</mat-icon></button>
       <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+          <span><button class="d-block d-md-none" mat-icon-button (click)="toggleSideMenu()"><mat-icon  >menu</mat-icon></button></span>
+
     </mat-toolbar>
 <section class="findings-container">
 

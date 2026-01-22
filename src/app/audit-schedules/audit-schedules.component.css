@@ -1,0 +1,42 @@
+ @media (max-width: 768px) {
+
+ .mat-table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  .tblTh {
+    display: none;
+  }
+
+.mat-table tr {
+    background: #ebebeb;
+    margin-bottom: 1rem !important;
+    border-radius: 8px !important;
+    padding: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .mat-table td {
+    padding: 0.4rem 0;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+
+  }
+  .mat-mdc-cell{
+    border: none !important;
+  }
+  .mat-mdc-row {
+    height: auto !important;
+    margin-bottom: 1rem !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06) !important;
+
+  }
+
+}

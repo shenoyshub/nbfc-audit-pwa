@@ -40,6 +40,10 @@ import { LeftsidebarComponent } from '../leftsidebar/leftsidebar.component';
 ],
 })
 export class AuditTypesComponent implements OnInit {
+     isExpanded = false;
+     toggleSideMenu() {
+    this.isExpanded = !this.isExpanded;
+  }
    auditForm : FormGroup;
    showForm = false;
   constructor(private fb: FormBuilder) {

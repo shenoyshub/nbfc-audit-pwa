@@ -1,186 +1,150 @@
 <mat-sidenav-container class="sidenav-container">
+
+  <!-- SIDE NAV -->
   <mat-sidenav mode="side" [opened]="true" class="sidenav" [ngClass]="{ expanded: isExpanded }">
-      <div class="d-flex w-100">
-         <mat-toolbar color="primary">Menu</mat-toolbar>
-            <div>
-              <button mat-icon-button class="d-block d-md-none" (click)="toggleSideMenu()"><mat-icon>cancel</mat-icon></button>
-            </div>
-
-      </div>
-
+    <mat-toolbar color="primary">Menu</mat-toolbar>
     <app-leftsidebar></app-leftsidebar>
   </mat-sidenav>
 
+  <!-- MAIN CONTENT -->
   <mat-sidenav-content>
     <div class="container-fluid">
-      <mat-toolbar color="primary  d-flex  ">
-         <!-- <button mat-icon-button (click)="toggleSideMenu()"><mat-icon>menu</mat-icon></button> -->
-        <h2 class="py-2 flex-grow-1 sub_title ">Audit Types</h2>
-        <span class="spacer"></span>
+
+      <!-- TOOLBAR -->
+      <mat-toolbar color="primary" class="d-flex align-items-center">
+        <h2 class="flex-grow-1 sub_title">Audit Types</h2>
         <button mat-icon-button><mat-icon>notifications</mat-icon></button>
         <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
-          <span><button class="d-block d-md-none" mat-icon-button (click)="toggleSideMenu()"><mat-icon  >menu</mat-icon></button></span>
-
+        <button class="d-block d-md-none" mat-icon-button (click)="toggleSideMenu()">
+          <mat-icon>menu</mat-icon>
+        </button>
       </mat-toolbar>
 
+      <!-- HEADER + NEW AUDIT BUTTON + VIEW SWITCH -->
+      <div class="row my-3 align-items-center">
+        <div class="col-md-6 d-flex align-items-center mb-2">
+          <p class="flex-grow-1 mb-0">
+            Define the standard categories of audits conducted within the organization.
+          </p>
+          <button class="btn-save" (click)="showForm = !showForm">
+            <mat-icon>add</mat-icon> New Audit Type
+          </button>
+        </div>
 
-      <div class="dashboard-content">
-        <div class="container-fluid">
-          <div class="row py-2">
-
-            <div class="col-md-12 d-flex flex-row">
-              <p class=" flex-grow-1" >Define the standard categories of audits conducted within the organization.</p>
-               <button   class="btn-save" (click)="showForm = !showForm">
-  <mat-icon>
-add
-</mat-icon> Add
-</button>
-
-            </div>
-            <div class="col-md-12">
-
-            </div>
-            <div class="col-md-12 py-2 ">
-                 <mat-card class="stat-card  py-2 card_app card_app_btn_div" *ngIf="showForm">
-                <mat-card-header >
-               <div class="w-100" >
-  <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
-      <div class="container-fluid">
-        <div class="row">
-       <div class="col-md-4 col-lg-3">
-          <mat-form-field appearance="outline" class="w-100">
-      <mat-label>Audit Type</mat-label>
-      <input formControlName="audit_Type" matInput />
-    </mat-form-field>
-
-       </div>
-       <div class="col-md-4 col-lg-3">
-        <mat-form-field appearance="outline" class="menu-form-field w-100">
-  <mat-label>Frequency</mat-label>
-  <mat-select formControlName="audit_Frequency">
-    <mat-option value="">Select Frequency</mat-option>
-    <mat-option value="electronics">Week</mat-option>
-    <mat-option value="clothing">Month</mat-option>
-    <mat-option value="books">Year</mat-option>
-  </mat-select>
-</mat-form-field>
-
-       </div>
-       <div class="col-md-4 col-lg-3">
-          <mat-form-field appearance="outline" class="w-100">
-      <mat-label>	Branch Size </mat-label>
-      <input matInput formControlName="audit_Branch" />
-    </mat-form-field>
-
-       </div>
-     </div>
+        <div class="col-md-6 d-flex justify-content-md-end mb-2">
+          <mat-button-toggle-group [(value)]="viewMode" class="view-toggle" appearance="legacy">
+            <mat-button-toggle value="card">Card View</mat-button-toggle>
+            <mat-button-toggle value="grid">Grid View</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
       </div>
 
-    <button class="btn-save"ype="submit" [disabled]="auditForm.invalid"  > <mat-icon>save</mat-icon> Save</button>
-  </form>
-</div>
-</mat-card-header>
-</mat-card>
-            </div>
-            <!-- <div class="col-md-12">
-              <button mat-raised-button color="primary" [matMenuTriggerFor]="addMenu">Add</button>
-
-<mat-menu #addMenu="matMenu" class="add-form-menu">
-  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="outline" class="menu-form-field">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
-      <mat-error *ngIf="addForm.get('name')?.hasError('required')">
-        Name is required
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="menu-form-field">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" type="email">
-    </mat-form-field>
-
-    <div class="menu-form-actions">
-      <button mat-button type="button" (click)="addForm.reset()">Cancel</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="addForm.invalid">Save</button>
-    </div>
-  </form>
-</mat-menu>
-
-
-            </div> -->
-            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
-              <mat-card class="stat-card  py-2 card_app card_app_btn_div">
-                <mat-card-header class="d-flex flex-column">
-                  <div class="d-flex">
-                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
-                        class="mb-0  ">business_center</mat-icon> </div>
-                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
-                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+      <!-- FORM TO ADD NEW AUDIT -->
+      <div class="row mb-3" *ngIf="showForm">
+        <div class="col-md-12">
+          <mat-card class="stat-card py-2 card_app card_app_btn_div">
+            <mat-card-header>
+              <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                  <div class="col-md-4 col-lg-3 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Audit Type</mat-label>
+                      <input matInput formControlName="audit_Type" />
+                    </mat-form-field>
                   </div>
-                  <div class="pb-3">
-                    <mat-card-title class="card_title_xs">Regulatory Compliance</mat-card-title>
-                    <mat-card-subtitle class="card_sub_title_xs ">Checking adherence to RBI
-                      guidelines.</mat-card-subtitle>
+
+                  <div class="col-md-4 col-lg-3 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Frequency</mat-label>
+                      <mat-select formControlName="audit_Frequency">
+                        <mat-option value="">Select Frequency</mat-option>
+                        <mat-option value="week">Week</mat-option>
+                        <mat-option value="month">Month</mat-option>
+                        <mat-option value="year">Year</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                </mat-card-header>
-              </mat-card>
 
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
-              <mat-card class="stat-card  py-2 card_app card_app_btn_div">
-                <mat-card-header class="d-flex flex-column">
-                  <div class="d-flex">
-                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
-                        class="mb-0  ">business_center</mat-icon> </div>
-                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
-                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  <div class="col-md-4 col-lg-3 mb-2">
+                    <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Branch Size</mat-label>
+                      <input matInput formControlName="audit_Branch" />
+                    </mat-form-field>
                   </div>
-                  <div class="pb-3">
-                    <mat-card-title class="card_title_xs">KYC & Onboarding</mat-card-title>
-                    <mat-card-subtitle class="card_sub_title_xs ">Checking adherence to RBI
-                      guidelines.</mat-card-subtitle>
-                  </div>
-                </mat-card-header>
-              </mat-card>
+                </div>
+                <button class="btn-cancel" type="button" (click)="cancelForm()">
+                  <mat-icon>cancel</mat-icon> Cancel
+                </button>
+                <button class="btn-save mt-2" type="submit" [disabled]="auditForm.invalid">
+                  <mat-icon>save</mat-icon> Save
+                </button>
+              </form>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
 
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
-              <mat-card class="stat-card  py-2 card_app card_app_btn_div">
-                <mat-card-header class="d-flex flex-column">
-                  <div class="d-flex">
-                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
-                        class="mb-0  ">business_center</mat-icon> </div>
-                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
-                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
-                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
-                  </div>
-                  <div class="pb-3">
-                    <mat-card-title class="card_title_xs">Loan Portfolio Quality</mat-card-title>
-                    <mat-card-subtitle class="card_sub_title_xs ">Checking adherence to RBI
-                      guidelines.</mat-card-subtitle>
-                  </div>
-                </mat-card-header>
-              </mat-card>
+      <!-- CATEGORIES -->
+      <div *ngFor="let category of auditTypeList.auditCategories" class="mb-4">
 
-            </div>
-
-
-
-          </div>
-          <div class="row">
-
-
+        <div class="row mb-2">
+          <div class="col-12">
+            <h5 class="category-title">{{ category.name }}</h5>
           </div>
         </div>
 
+        <!-- CARD VIEW -->
+        <div class="row" *ngIf="viewMode === 'card'">
+          <div class="col-sm-12 col-md-6 col-lg-4 my-2" *ngFor="let audit of category.auditTypes">
+            <mat-card class="stat-card py-2 card_app card_app_btn_div audit-card">
+              <mat-card-header class="d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="txt_blue flex-grow-1">
+                    <mat-icon mat-card-avatar>{{ audit.icon }}</mat-icon>
+                  </div>
+                  <div class="btn_sml">
+                    <mat-icon mat-card-avatar (click)="editAudit(audit.id)">edit</mat-icon>
+                  </div>
+                  <div class="btn_sml">
+                    <mat-icon mat-card-avatar (click)="deleteAudit(audit.id)">delete</mat-icon>
+                  </div>
+                </div>
+
+                <div class="pb-3">
+                  <mat-card-title class="card_title_xs">{{ audit.name }}</mat-card-title>
+                  <mat-card-subtitle class="card_sub_title_xs">{{ audit.description }}</mat-card-subtitle>
+                </div>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>
+
+        <!-- GRID VIEW -->
+        <div *ngIf="viewMode === 'grid'" class="table-responsive">
+          <table class="table table-bordered table-sm">
+            <thead>
+              <tr>
+                <th>Audit Type</th>
+                <th>Description</th>
+                <th width="120">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let audit of category.auditTypes">
+                <td>{{ audit.name }}</td>
+                <td>{{ audit.description }}</td>
+                <td>
+                  <mat-icon (click)="editAudit(audit.id)">edit</mat-icon>
+                  <mat-icon (click)="deleteAudit(audit.id)">delete</mat-icon>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
       </div>
+
     </div>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

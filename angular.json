@@ -39,12 +39,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "1MB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "1MB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 }
               ],
               "baseHref": "/nbfc-audit-pwa/",

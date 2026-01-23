@@ -3,20 +3,15 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "ES2022",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "lib": ["ES2022", "DOM"],
-    "baseUrl": "./",
-
+    "types": [],
     "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true
   },
   "angularCompilerOptions": {
     "strictTemplates": true,
@@ -24,10 +19,5 @@
     "strictInputAccessModifiers": true,
     "typeCheckHostBindings": true,
     "enableI18nLegacyMessageIdFormat": false
-  },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.spec.json" }
-  ]
+  }
 }

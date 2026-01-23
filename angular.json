@@ -65,6 +65,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          
           "options": {
             "ssl": true,
             "sslKey": "./ssl/server.key",

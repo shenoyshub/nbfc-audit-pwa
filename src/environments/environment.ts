@@ -502,7 +502,7 @@ export const environment = {
   //https://localhost:4200/#/login-redirect
   oicdConfig: {
     authority: 'https://isectesting.icrats.in/authorize',
-    redirectUrl: 'https://localhost:4200/#/login-redirect',
+    redirectUrl: 'https://localhost:4200/login-redirect',
     postLogoutRedirectUri: window.location.origin,
     clientId: 'nbfc-3-client',
     scope:

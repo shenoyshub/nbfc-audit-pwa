@@ -1,21 +1,23 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    //"ignoreDeprecations": "6.0",
-    "rootDir": "src",
     "outDir": "./out-tsc/app",
-
-    "target": "ES2022",
-    "module": "ES2022",
-    "moduleResolution": "Node",
-
-    "lib": ["ES2022", "DOM"],
     "types": [],
-
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "useDefineForClassFields": false
+    "rootDir": "src"
   },
+  "outDir": "./out-tsc/app",
+ // "baseUrl": "./",
+  // "paths": {
+  //   "@app/*": [
+  //     "src/app/*"
+  //   ],
+  //   "@env/*": [
+  //     "src/environments/*"
+  //   ]
+  // },
+  "files": [
+    "src/main.ts"
+  ],
   "include": [
     "src/**/*.ts"
   ],

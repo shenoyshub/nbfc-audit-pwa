@@ -45,4 +45,5 @@ export class App {
     this.deferredPrompt = null;
     this.showInstallButton.set(false);
   }
+ 
 }

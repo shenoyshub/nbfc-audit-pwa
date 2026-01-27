@@ -1,4 +1,8 @@
-import { Component, OnInit ,inject, } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
+
+// Angular Material imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -6,50 +10,55 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-leftsidebar',
+  standalone: true,
   templateUrl: './leftsidebar.component.html',
   styleUrls: ['./leftsidebar.component.css'],
-  standalone : true,
   imports: [
     CommonModule,
+   // RouterLink,        // <-- Needed if you use routerLink in the template
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule,
-    CommonModule,
-
-  ],
+    MatGridListModule
+  ]
 })
 export class LeftsidebarComponent implements OnInit {
   private router = inject(Router);
-   isExpanded = false;
-     toggleSideMenu() {
+  
+  isExpanded = false;
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  toggleSideMenu(): void {
     this.isExpanded = !this.isExpanded;
   }
-  constructor() { }
 
-  ngOnInit() {
-  }
-  auditDashboard(){
+  // Navigation methods
+  auditDashboard(): void {
     this.router.navigate(['/audit-dashboard']);
   }
-  auditType(){
+
+  auditType(): void {
     this.router.navigate(['/audit-types']);
   }
-  auditors(){
+
+  auditors(): void {
     this.router.navigate(['/auditors']);
   }
-  auditSchedules(){
+
+  auditSchedules(): void {
     this.router.navigate(['/audit-schedules']);
   }
-   auditFindings(){
+
+  auditFindings(): void {
     this.router.navigate(['/audit-findings-list']);
   }
   auditChecklist(){

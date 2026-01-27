@@ -15,19 +15,20 @@ import {
 } from 'angular-auth-oidc-client';
 
 import { routes } from './app.routes';
-import { oidcConfig } from './auth/oidc.config';
+
 import { provideStore } from '@ngrx/store';
 import { AppInitService } from './services/app-init.service';
 import { appInitFactory } from './factories/app-init.factory';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
-
+import { environment } from '../environments/environment';
+import { oidcConfig } from './auth/oidc.config';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideAuth({
-        config: oidcConfig
+        config: oidcConfig.config
     }),
     provideServiceWorker('ngsw-worker.js', {
         enabled: !isDevMode(),
@@ -35,12 +36,12 @@ export const appConfig: ApplicationConfig = {
     })
     , provideStore()
     , provideCharts(withDefaultRegisterables())
-    // ,
+     ,
 
-    // // 👇 APP INITIALIZER
-    //  provideAppInitializer(() => {
-    //   const appInitService = inject(AppInitService);
-    // //   return appInitService.init();
-    // })
+    //APP INITIALIZER
+     provideAppInitializer(() => {
+      const appInitService = inject(AppInitService);
+       return appInitService.init();
+    })
 ]
 };

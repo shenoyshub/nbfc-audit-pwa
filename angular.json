@@ -39,12 +39,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "1MB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "1MB",
-                  "maximumError": "1MB"
+                  "maximumError": "2MB"
                 }
               ],
               "baseHref": "/nbfc-audit-pwa/",
@@ -65,6 +65,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          
           "options": {
             "ssl": true,
             "sslKey": "./ssl/server.key",

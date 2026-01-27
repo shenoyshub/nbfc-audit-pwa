@@ -21,7 +21,7 @@ export class AppInitService {
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  init(): void {
+    init(): void {
     this.storeInitialUrl();
     this.trackNavigation();
     this.trackRequestedUrl();

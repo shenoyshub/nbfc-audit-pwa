@@ -15,13 +15,20 @@
       <a mat-list-item class=" sidebaritem" (click)="auditType()"  ><mat-icon>settings</mat-icon> Audit Types</a>
       <a mat-list-item  class=" sidebaritem" (click)="auditors()" ><mat-icon>group</mat-icon> Auditors</a>
       <a mat-list-item  class=" sidebaritem"  (click)="auditChecklist()" ><mat-icon>playlist_add_check</mat-icon> Checklist</a>
+      <a mat-list-item class=" sidebaritem" (click)="auditType()"  ><mat-icon>settings</mat-icon> Task Types</a>
+      <a mat-list-item  class=" sidebaritem" (click)="auditors()" ><mat-icon>person</mat-icon> Auditors</a>
+       <a mat-list-item  class=" sidebaritem" (click)="auditors()" ><mat-icon>group</mat-icon> Audit Group</a>
+      <a mat-list-item  class=" sidebaritem"><mat-icon>playlist_add_check</mat-icon> Audit Task Types</a>
        <p class=" divider_menu "><span>Audit Execution</span></p>
 
-      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>event</mat-icon> Schedules</a>
-      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>query_stats</mat-icon> Audit Review</a>
-       <p class=" divider_menu "><span>Audit Closure</span></p>
-
+      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>event</mat-icon>AuditSchedules</a>
+       <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>content_paste_search</mat-icon> Audit Observations</a>
       <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>content_paste_search</mat-icon> Audit Findings</a>
+      <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>content_paste_search</mat-icon> Action Plan</a>
+      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>query_stats</mat-icon> Task Review</a>
+      <p class=" divider_menu "><span>Audit Closure</span></p>
+
+      <a mat-list-item  class=" sidebaritem"  (click)="auditSchedules()" ><mat-icon>query_stats</mat-icon> Audit Closure</a>
       <a mat-list-item  class=" sidebaritem"  (click)="auditFindings()" ><mat-icon>note_stack</mat-icon> Audit Reports</a>
     </mat-nav-list>
     <!-- </mat-sidenav> -->

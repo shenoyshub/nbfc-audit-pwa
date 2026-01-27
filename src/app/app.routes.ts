@@ -1,14 +1,27 @@
 import { Routes } from '@angular/router';
-
+import { authGuard } from './auth/auth.guard';
 export const routes: Routes = [
   {
     path: '',
+    
     redirectTo: 'audit-dashboard',
     pathMatch: 'full'
   },
-
+   { path: 'logout',
+    loadComponent: () =>
+      import(
+        './logout/logout.component'
+      ).then((c) => c.LogoutComponent),
+  },
+   { path: 'login-redirect',
+    loadComponent: () =>
+      import(
+        './login-redirect/login-redirect.component'
+      ).then((c) => c.LoginRedirectComponent),
+  },
   {
     path: 'audit-findings-list',
+      canActivate: [authGuard],
     loadComponent: () =>
       import('./audit-findings-list/audit-findings-list.component')
         .then(m => m.AuditFindingsListComponent)
@@ -16,22 +29,23 @@ export const routes: Routes = [
 
   {
     path: 'audit-findings',
+      canActivate: [authGuard],
     loadComponent: () =>
       import('./audit-findings/audit-findings.component')
         .then(m => m.AuditFindingsComponent)
   },
   {
-    path : 'audit-dashboard', loadComponent: ()=> import('./auditdashboard/auditdashboard.component').then(m=>m.AuditdashboardComponent)
+    path : 'audit-dashboard',  canActivate: [authGuard], loadComponent: ()=> import('./auditdashboard/auditdashboard.component').then(m=>m.AuditdashboardComponent)
   },
   {
-    path : 'audit-types', loadComponent: ()=> import('./audit-types/audit-types.component').then(m=>m.AuditTypesComponent)
+    path : 'audit-types',  canActivate: [authGuard], loadComponent: ()=> import('./audit-types/audit-types.component').then(m=>m.AuditTypesComponent)
   },
   {
-    path : 'auditors',loadComponent:()=>import('./createauditors/createauditors.component').then(m=>m.CreateauditorsComponent)
+    path : 'auditors',  canActivate: [authGuard],loadComponent:()=>import('./createauditors/createauditors.component').then(m=>m.CreateauditorsComponent)
   }
   ,
    {
-    path : 'audit-schedules',loadComponent:()=>import('./audit-schedules/audit-schedules.component').then(m=>m.AuditSchedulesComponent)
+    path : 'audit-schedules',  canActivate: [authGuard],loadComponent:()=>import('./audit-schedules/audit-schedules.component').then(m=>m.AuditSchedulesComponent)
   }
   ,
   {

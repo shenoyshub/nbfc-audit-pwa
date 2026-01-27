@@ -52,4 +52,7 @@ export class LeftsidebarComponent implements OnInit {
    auditFindings(){
     this.router.navigate(['/audit-findings-list']);
   }
+  auditChecklist(){
+    this.router.navigate(['/audit-checklist']);
+  }
 }

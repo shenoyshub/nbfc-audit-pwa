@@ -34,6 +34,9 @@ export const routes: Routes = [
     path : 'audit-schedules',loadComponent:()=>import('./audit-schedules/audit-schedules.component').then(m=>m.AuditSchedulesComponent)
   }
   ,
+  {
+    path : 'audit-checklist',loadComponent:()=>import('./auditchecklist/auditchecklist.component').then(m=>m.AuditchecklistComponent)
+  },
 
   {
     path: '**',

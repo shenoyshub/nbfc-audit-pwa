@@ -3,50 +3,30 @@
  height: 32px !important;
 }
 /* ===== Add Button ===== */
-.btn-save {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 4px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+// .btn-save {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 6px;
+//   padding: 6px 14px;
+//   font-size: 13px;
+//   font-weight: 500;
+//   border-radius: 4px;
+//   background: #1976d2;
+//   color: #fff;
+//   border: none;
+//   cursor: pointer;
 
-  mat-icon {
-    font-size: 18px;
-  }
+//   mat-icon {
+//     font-size: 18px;
+//   }
 
-  &:hover {
-    background: #1565c0;
-  }
-}
+//   &:hover {
+//     background: #1565c0;
+//   }
+// }
 
 /* ===== Add Button ===== */
-.btn-cancel {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 4px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  cursor: pointer;
 
-  mat-icon {
-    font-size: 18px;
-  }
-
-  &:hover {
-    background: #1565c0;
-  }
-}
 
 /* ===== Card Grid ===== */
 .audit-card-row {
@@ -119,8 +99,8 @@
 
   mat-button-toggle {
     border-radius: 50px !important;
-    padding: 0 18px;
-    font-size: 13px;          // match btn-save font-size
+    padding: 0 8px;
+    font-size: 12px;          // match btn-save font-size
     font-weight: 500;         // match btn-save boldness
     text-transform: none;
     line-height: 36px;        // vertical center

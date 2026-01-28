@@ -265,6 +265,30 @@ button {
     color: $app_clr;
   }
 }
+.btn-cancel {
+ margin: 8px;
+  padding: 8px 16px;
+  background-color: $clr_white;
+  color: $app_clr;
+  border: 1px solid;
+      border-color: $app_clr;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  z-index: 1000;
+  &:hover{
+    border: 1px solid;
+    border-color: $app_clr;
+    background-color: $app_clr;
+    color: $clr_white;
+  }
+}
 // formstyle
 // .add-form-menu .mat-mdc-menu-content {
 //   padding: 16px;

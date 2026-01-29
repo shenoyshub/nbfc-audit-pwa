@@ -30,7 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 })
 export class LeftsidebarComponent implements OnInit {
   private router = inject(Router);
-  
+
   isExpanded = false;
 
   constructor() {}
@@ -63,5 +63,8 @@ export class LeftsidebarComponent implements OnInit {
   }
   auditChecklist(){
     this.router.navigate(['/audit-checklist']);
+  }
+  auditUsergroup(){
+    this.router.navigate(['/audit-user-groups']);
   }
 }

@@ -3,7 +3,7 @@ import { authGuard } from './auth/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    
+
     redirectTo: 'audit-dashboard',
     pathMatch: 'full'
   },
@@ -51,6 +51,10 @@ export const routes: Routes = [
   {
     path : 'audit-checklist',loadComponent:()=>import('./auditchecklist/auditchecklist.component').then(m=>m.AuditchecklistComponent)
   },
+  {
+    path : 'audit-user-groups' , loadComponent : ()=>import('./audit-user-groups/audit-user-groups.component').then(m=>m.AuditUserGroupsComponent)
+  }
+  ,
 
   {
     path: '**',

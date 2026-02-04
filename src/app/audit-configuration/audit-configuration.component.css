@@ -1,0 +1,28 @@
+.text-slate-500 {
+  opacity: 1;
+    color: rgba(100 ,116 ,139 ,0.9);
+    font-weight: 600;
+        letter-spacing: 0.05em;
+        font-size: 0.8rem;
+    line-height: 1rem;
+    text-transform: uppercase;
+}
+.icon_div_td{
+  width: 32px;
+  height: 32px;
+}
+.icon_div_td .mat-icon{
+   /* width: 16px;
+   height: 16px; */
+   font-size: 18px;
+   text-align: center;
+   vertical-align: middle;
+}
+.btn-sm{
+  font-size: 16px;
+  padding: 4px;
+  height: 32px;
+}
+.btn-sm .mat-icon{
+  font-size: 22px;
+}

@@ -1,0 +1,224 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" [opened]="true" class="sidenav" [ngClass]="{ expanded: isExpanded }">
+    <div class="d-flex w-100">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+      <div>
+        <button mat-icon-button class="d-block d-md-none"
+          (click)="toggleSideMenu()"><mat-icon>cancel</mat-icon></button>
+      </div>
+
+    </div>
+
+    <app-leftsidebar></app-leftsidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <ng-template #dialogTemplate>
+      <h3 mat-dialog-title>Create Checklist</h3>
+
+      <mat-dialog-content>
+        <!-- <p> </p> -->
+      </mat-dialog-content>
+
+      <mat-dialog-actions align="end">
+        <!-- formDiv -->
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="w-100">
+                <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="w-100">
+                          <mat-label>Checklist Name</mat-label>
+                          <input formControlName="ChecklistName" matInput />
+                        </mat-form-field>
+
+                      </div>
+
+                      <div class="col-md-12">
+                        <mat-form-field appearance="outline" class="menu-form-field w-100">
+                          <mat-label>Audit Type</mat-label>
+                          <mat-select formControlName="AuditType">
+                            <mat-option value="">Select Audit Type</mat-option>
+                            <mat-option value="electronics">Internal Audit </mat-option>
+                            <mat-option value="clothing">OPerational Audit</mat-option>
+
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!-- <button class="btn-save"ype="submit" [disabled]="auditForm.invalid"  > <mat-icon>save</mat-icon> Save</button> -->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn_save_sm_line" (click)="closeDialog()"> <mat-icon>close</mat-icon> Cancel</button>
+        <button class="btn_save_sm" (click)="closeDialog()">
+           <mat-icon>save</mat-icon> Save
+        </button>
+      </mat-dialog-actions>
+    </ng-template>
+    <div class="container-fluid">
+      <mat-toolbar color="primary  d-flex  ">
+        <!-- <button mat-icon-button (click)="toggleSideMenu()"><mat-icon>menu</mat-icon></button> -->
+        <h2 class="py-2 flex-grow-1 sub_title ">Audit Checklist</h2>
+        <span class="spacer"></span>
+        <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+        <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
+        <span><button class="d-block d-md-none" mat-icon-button
+            (click)="toggleSideMenu()"><mat-icon>menu</mat-icon></button></span>
+
+      </mat-toolbar>
+
+
+      <div class="dashboard-content">
+        <div class="container-fluid">
+          <div class="row py-2">
+
+            <div class="col-md-12 d-flex flex-row">
+              <p class=" flex-grow-1">Design your audit questionnaires.</p>
+              <!-- <button   class="btn-save" (click)="showForm = !showForm">
+  <mat-icon>
+add
+</mat-icon> New Checklist
+</button> -->
+              <button class="btn-save" (click)="openDialog()">
+                <mat-icon>
+                  add
+                </mat-icon> New Checklist
+              </button>
+
+
+            </div>
+            <div class="col-md-12">
+
+            </div>
+            <div class="col-md-12 py-2 ">
+              <mat-card class="stat-card  py-2 card_app card_app_btn_div" *ngIf="showForm">
+                <mat-card-header class="d-flex flex-column">
+
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="w-100">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <form [formGroup]="form" class="form-wrapper">
+
+                                <div class="row">
+
+                                  <div class="col-md-4">
+                                    <mat-form-field appearance="outline" class="w-100">
+                                      <mat-label>Section Header</mat-label>
+                                      <input matInput formControlName="headerName">
+                                    </mat-form-field>
+                                  </div>
+
+                                </div>
+
+                                <div formArrayName="items">
+                                  <div class="form-row row " *ngFor="let item of items.controls; let i = index"
+                                    [formGroupName]="i">
+
+                                    <div class="col-md-4">
+                                      <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>Description</mat-label>
+                                        <input matInput formControlName="name">
+                                      </mat-form-field>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                      <mat-form-field appearance="outline" class="w-100">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select formControlName="type">
+                                          <mat-option *ngFor="let opt of options" [value]="opt">
+                                            {{ opt }}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                    </div>
+
+                                    <button mat-icon-button color="warn" *ngIf="items.length > 1"
+                                      (click)="removeItem(i)">
+                                      <mat-icon>delete</mat-icon>
+                                    </button>
+
+                                  </div>
+                                </div>
+
+                                <button class="btn_save_sm_line" color="primary" type="button" (click)="addItem()">
+                                  <mat-icon>add</mat-icon>
+                                  Add
+                                </button>
+
+                              </form>
+                              <button class="btn-save" type="submit" [disabled]="auditForm.invalid">
+                                <mat-icon>save</mat-icon> Save</button>
+
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </mat-card-header>
+              </mat-card>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-lg-4  my-2">
+              <mat-card class="stat-card  py-1 card_app card_app_btn_div">
+                <mat-card-header class="d-flex flex-column">
+                  <div class="d-flex flex-row-reverse pb-1">
+                    <span class="badge bg-success float-right  ">Active</span>
+                  </div>
+                  <!-- <div class="d-flex">
+                    <div class=" bd-highlight flex-grow-1 txt_blue"> <mat-icon mat-card-avatar
+                        class="mb-0  ">person</mat-icon> </div>
+                    <div class=" bd-highlight  btn_sml "><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">edit</mat-icon></div>
+                    <div class=" bd-highlight btn_sml"><mat-icon mat-card-avatar
+                        class="mb-0 flex-grow-1 ">delete</mat-icon></div>
+                  </div> -->
+                  <div class="pb-3">
+                    <mat-card-title class="card_title_xs">AuditChecklist</mat-card-title>
+                    <mat-card-subtitle class="card_sub_title_xs ">AuditTemplates </mat-card-subtitle>
+                    <mat-card-subtitle class="card_sub_title_xs ">Internal Audit </mat-card-subtitle>
+                    <!-- <mat-card-subtitle class="card_sub_title_xs ">Branch </mat-card-subtitle> -->
+                    <button (click)="showForm = !showForm" class="btn_save_sm" type="submit"> <mat-icon>add</mat-icon>
+                      Create Template</button>
+
+
+                  </div>
+                </mat-card-header>
+              </mat-card>
+
+            </div>
+
+
+
+
+          </div>
+          <div class="row">
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- <button mat-raised-button color="primary" (click)="openDialog()">
+  Open Modal
+</button> -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

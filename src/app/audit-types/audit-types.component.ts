@@ -19,6 +19,7 @@ import { AUDIT_CATEGORIES } from './audit-types-data/audit-categories.data';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-audit-types',
@@ -39,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,  // ✅ Add this
     MatInputModule,      // ✅ Add this
     MatSelectModule,     // ✅ Add this
-    LeftsidebarComponent
+    LeftsidebarComponent,
+    MatSlideToggleModule
+
   ]
 })
 export class AuditTypesComponent implements OnInit {
@@ -57,7 +60,9 @@ export class AuditTypesComponent implements OnInit {
     this.auditForm = this.fb.group({
       audit_Type: ['', Validators.required],
       audit_Frequency: ['', Validators.required],
-      audit_Branch: ['']
+      audit_Branch: [''],
+      isAuditGroup : [false],
+      audit_Group : ['']
     });
   }
 

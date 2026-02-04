@@ -15,9 +15,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { LeftsidebarComponent } from '../leftsidebar/leftsidebar.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @Component({
-  selector: 'app-createauditors',
-  templateUrl: './createauditors.component.html',
-  styleUrls: ['./createauditors.component.css'],
+  selector: 'app-audit-category',
+  templateUrl: './audit-category.component.html',
+  styleUrls: ['./audit-category.component.css'],
   standalone : true,
   imports: [
     CommonModule,
@@ -39,30 +39,30 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 ],
 })
-export class CreateauditorsComponent implements OnInit {
-     isExpanded = false;
+export class AuditCategoryComponent implements OnInit {
+   isExpanded = false;
      toggleSideMenu() {
     this.isExpanded = !this.isExpanded;
   }
   auditForm : FormGroup;
    showForm = false;
+   usersgroup: string[] = [
+    'RBI',
+    'MCA',
+    'Income Tax'
+  ];
+
+   selectedUsers: string[] = [];
   constructor(private fb: FormBuilder) {
     this.auditForm  = this.fb.group({
-      AuditorName: ['', Validators.required],
-       UserID: ['', Validators.required],
-       AuditType : [''],
-       Role : [''],
-       Zone : [''] ,
-       Branch : ['']
-
+      groupName: ['', Validators.required],
 
     });
    }
 
+
   ngOnInit() {
   }
-
-
   onSubmit() {
     if (this.auditForm .valid) {
       console.log('Form submitted:', this.auditForm .value);
@@ -72,5 +72,4 @@ export class CreateauditorsComponent implements OnInit {
       // Trigger menu close manually if needed: document.querySelector('.cdk-overlay-pane')?.dispatchEvent(new MouseEvent('click'));
     }
   }
-
 }

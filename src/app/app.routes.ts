@@ -3,7 +3,7 @@ import { authGuard } from './auth/auth.guard';
 export const routes: Routes = [
   {
     path: '',
-    
+
     redirectTo: 'audit-dashboard',
     pathMatch: 'full'
   },
@@ -48,7 +48,19 @@ export const routes: Routes = [
     path : 'audit-schedules',  canActivate: [authGuard],loadComponent:()=>import('./audit-schedules/audit-schedules.component').then(m=>m.AuditSchedulesComponent)
   }
   ,
-
+  {
+    path : 'audit-checklist',loadComponent:()=>import('./auditchecklist/auditchecklist.component').then(m=>m.AuditchecklistComponent)
+  },
+  {
+    path : 'audit-user-groups' , loadComponent : ()=>import('./audit-user-groups/audit-user-groups.component').then(m=>m.AuditUserGroupsComponent)
+  }
+  ,
+  {
+    path : 'audit-category', loadComponent :()=>import('./audit-category/audit-category.component').then(m=>m.AuditCategoryComponent)
+  },
+  {
+    path : 'audit-configuration', loadComponent :()=>import('./audit-configuration/audit-configuration.component').then(m=>m.AuditConfigurationComponent)
+  },
   {
     path: '**',
     redirectTo: 'audit-dashboard'

@@ -14,10 +14,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LeftsidebarComponent } from '../leftsidebar/leftsidebar.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+
 @Component({
-  selector: 'app-createauditors',
-  templateUrl: './createauditors.component.html',
-  styleUrls: ['./createauditors.component.css'],
+  selector: 'app-audit-user-groups',
+  templateUrl: './audit-user-groups.component.html',
+  styleUrls: ['./audit-user-groups.component.css'],
   standalone : true,
   imports: [
     CommonModule,
@@ -39,22 +40,24 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 ],
 })
-export class CreateauditorsComponent implements OnInit {
-     isExpanded = false;
+export class AuditUserGroupsComponent implements OnInit {
+
+  isExpanded = false;
      toggleSideMenu() {
     this.isExpanded = !this.isExpanded;
   }
   auditForm : FormGroup;
    showForm = false;
+   usersgroup: string[] = [
+    'User1',
+    'User2',
+    'User3',
+    'User4'
+  ];
+  selectedUsers: string[] = [];
   constructor(private fb: FormBuilder) {
     this.auditForm  = this.fb.group({
-      AuditorName: ['', Validators.required],
-       UserID: ['', Validators.required],
-       AuditType : [''],
-       Role : [''],
-       Zone : [''] ,
-       Branch : ['']
-
+      groupName: ['', Validators.required],
 
     });
    }

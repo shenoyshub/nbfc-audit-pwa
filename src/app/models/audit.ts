@@ -1,3 +1,5 @@
+import { Staff } from "./staff";
+
 export interface AuditType {
   auditCode: string;
   auditName: string;
@@ -6,7 +8,7 @@ export interface AuditType {
   auditStartDate: string;
   auditDueDate: string;
   auditEndedDate?: string;
-  assignedAuditors: AuditStaff[];
+  assignedAuditors: Staff[];
   auditTasks:TaskType
 
 }

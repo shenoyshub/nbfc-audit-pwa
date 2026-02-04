@@ -26,3 +26,259 @@
 .btn-sm .mat-icon{
   font-size: 22px;
 }
+
+
+
+
+/* stepper styles  */
+.stepper {
+  max-width: 900px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  opacity: 0.4;
+}
+
+.step-item.active,
+.step-item.completed {
+  opacity: 1;
+}
+
+.step-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #dee2e6;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step-item.active .step-circle {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.step-item.completed .step-circle {
+  background: #198754;
+  color: #fff;
+}
+
+.step-circle mat-icon {
+  /* font-size: 20px; */
+}
+
+.step-text {
+  line-height: 1.2;
+}
+
+/* Connector */
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #dee2e6;
+  margin: 0 12px;
+}
+
+.select-card {
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.select-card i {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #0d6efd;
+}
+
+.select-card:hover {
+  border-color: #0d6efd;
+  background: #f8f9fa;
+}
+
+.mat-icon{
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.mat-mdc-dialog-content {
+    max-height: 100vh !important;
+}
+/* html styles  */
+ .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .grid-row:hover {
+            background-color: #f8fafc;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+        }
+        .stepper-line {
+            background: linear-gradient(to right, #e2e8f0 50%, #0ea5e9 50%);
+            background-size: 200% 100%;
+            transition: background-position 0.3s ease;
+        }
+        .step-active .step-number {
+            background-color: #0ea5e9;
+            color: white;
+            border-color: #0ea5e9;
+        }
+        .step-completed .step-number {
+            background-color: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+        .workflow-connector {
+            position: relative;
+        }
+        .workflow-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -2rem;
+            width: 2rem;
+            height: 2px;
+            background: #cbd5e1;
+            transform: translateY(-50%);
+        }
+        .tree-node {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .tree-node::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #e2e8f0;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .status-badge {
+            position: relative;
+            overflow: hidden;
+        }
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .evidence-card { transition: all 0.3s ease; cursor: pointer; }
+        .evidence-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .evidence-card.selected { border-color: #0ea5e9; background-color: #f0f9ff; }
+        .sampling-card { transition: all 0.2s ease; }
+        .sampling-card:hover { border-color: #0ea5e9; background-color: #f8fafc; }
+        .sampling-card.selected { border-color: #0ea5e9; background-color: #f0f9ff; border-width: 2px; }
+        .upload-area { transition: all 0.3s ease; border-style: dashed; }
+        .upload-area:hover { border-color: #0ea5e9; background-color: #f0f9ff; }
+        .upload-area.has-file { border-color: #10b981; background-color: #f0fdf4; border-style: solid; }
+
+
+        /* step 5  */
+        .workflow-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6px 0;
+  font-size: 22px;
+}
+
+
+.compact-field {
+  width: 70px;
+  height: 50px !important;
+
+}
+ .compact-field .mat-mdc-text-field-wrapper {
+    padding: 0 !important;
+  }
+
+ .compact-field .mat-mdc-form-field-infix {
+    min-height: 32px;
+    padding: 4px 6px !important;
+  }
+
+ .compact-field input {
+    font-size: 13px;
+    text-align: center;
+  }
+
+
+
+  .workflow-card {
+  cursor: pointer;
+  flex: 1;
+  max-width: 180px;
+}
+
+.workflow-box {
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: all 0.25s ease;
+  background: #fff;
+}
+
+.workflow-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  font-size: 22px;
+}
+
+/* Connector line */
+.workflow-line {
+  flex: 1;
+  height: 4px;
+  background: linear-gradient(to right, #c7d2fe, #e9d5ff);
+  border-radius: 999px;
+  margin: 0 10px;
+}
+
+/* Checked state */
+.workflow-card input:checked + .workflow-box {
+  border-color: #0d6efd;
+  background: #f8fbff;
+  box-shadow: 0 6px 16px rgba(13, 110, 253, 0.15);
+  transform: translateY(-2px);
+}

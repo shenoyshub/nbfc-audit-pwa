@@ -74,4 +74,8 @@ export class LeftsidebarComponent implements OnInit {
     this.router.navigate(['/audit-configuration']);
 
   }
+    auditConfigurationTest(){
+    this.router.navigate(['/audit-configurationTest']);
+
+  }
 }

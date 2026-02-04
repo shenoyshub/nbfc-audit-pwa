@@ -13,59 +13,920 @@
 
   <mat-sidenav-content>
     <ng-template #dialogTemplate>
-      <h3 mat-dialog-title>Configure Audit Type</h3>
+      <!-- <h3 mat-dialog-title>Configure Audit Type</h3> -->
 
       <mat-dialog-content>
-        <!-- <p> </p> -->
-      </mat-dialog-content>
-
-      <mat-dialog-actions align="end">
-        <!-- formDiv -->
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
               <div class="w-100">
-                <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="w-100">
-                          <mat-label>Checklist Name</mat-label>
-                          <input formControlName="ChecklistName" matInput />
-                        </mat-form-field>
 
-                      </div>
 
-                      <div class="col-md-12">
-                        <mat-form-field appearance="outline" class="menu-form-field w-100">
-                          <mat-label>Audit Type</mat-label>
-                          <mat-select formControlName="AuditType">
-                            <mat-option value="">Select Audit Type</mat-option>
-                            <mat-option value="electronics">Internal Audit </mat-option>
-                            <mat-option value="clothing">OPerational Audit</mat-option>
+  <!-- HEADER -->
+  <div class="px-4 py-4 border-bottom bg-light d-flex justify-content-between align-items-center">
+    <div>
+      <h4 class="fw-bold mb-1">Configure Audit Type</h4>
+      <p class="text-muted small mb-0">
+        Define governance framework, scope, and workflow logic
+      </p>
+    </div>
 
-                          </mat-select>
-                        </mat-form-field>
-                      </div>
+    <div class="d-flex gap-3">
+      <button class="btn btn-outline-secondary" (click)="closeDialog()">
+         <mat-icon >save</mat-icon>Save Draft
+      </button>
+      <!-- <button class="btn btn-light rounded-circle" (click)="closeDialog()">
+         <mat-icon >close</mat-icon>
+      </button> -->
+      <button (click)="closeDialog()"
+        mat-icon-button
+        color="warn">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
 
-                    </div>
-                  </div>
+  <!-- STEPPER -->
+  <div class="px-4 py-3 border-bottom bg-white">
+   <div class="stepper d-flex align-items-center justify-content-between mx-auto">
 
-                  <!-- <button class="btn-save"ype="submit" [disabled]="auditForm.invalid"  > <mat-icon>save</mat-icon> Save</button> -->
-                </form>
+  <ng-container *ngFor="let step of steps; let last = last">
+
+    <div class="step-item"
+         [class.active]="currentStep === step.id"
+         [class.completed]="isCompleted(step.id)">
+
+      <div class="step-circle">
+
+        <!-- ✔ Completed -->
+        <mat-icon *ngIf="isCompleted(step.id)">check</mat-icon>
+
+        <!-- 🔢 Active / upcoming -->
+        <span *ngIf="!isCompleted(step.id)">
+          {{ step.id }}
+        </span>
+
+      </div>
+
+      <div class="ms-3 step-text">
+        <div class="fw-semibold text-dark small">
+          {{ step.title }}
+        </div>
+        <div class="text-muted small">
+          {{ step.subtitle }}
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="!last" class="step-line"></div>
+
+  </ng-container>
+
+</div>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="flex-grow-1 overflow-auto bg-light p-4">
+    <div class="container">
+
+      <!-- STEP 1 -->
+      <div *ngIf="currentStep === 1" class="card shadow-sm">
+        <div class="card shadow-sm border-0 mb-4">
+  <div class="card-body p-4">
+
+    <h5 class="fw-semibold text-dark mb-4 d-flex align-items-center gap-2">
+      <mat-icon class="text-primary">fingerprint</mat-icon>
+      Basic Information
+    </h5>
+
+    <div class="row g-4">
+
+      <div class="col-md-6">
+        <label class="form-label fw-medium">
+          Audit Name <span class="text-danger">*</span>
+        </label>
+        <input
+          type="text"
+          class="form-control"
+          value="RBI Inspection">
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-medium">
+          Audit Code <span class="text-danger">*</span>
+        </label>
+        <input
+          type="text"
+          class="form-control bg-light"
+          value="AUD-2024-015"
+          readonly>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-medium">
+          Category <span class="text-danger">*</span>
+        </label>
+        <select class="form-select">
+          <option>Regulatory</option>
+          <option>Statutory</option>
+          <option>Internal</option>
+          <option>Continuous</option>
+        </select>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-medium">
+          Frequency <span class="text-danger">*</span>
+        </label>
+        <select class="form-select">
+          <option>Ad-hoc</option>
+          <option>Annual</option>
+          <option>Quarterly</option>
+          <option>Monthly</option>
+          <option>Daily</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="mt-4">
+      <label class="form-label fw-medium">
+        Purpose & Description
+      </label>
+      <textarea
+        rows="3"
+        class="form-control">
+Governance & Financial Soundness evaluation under RBI CAMELS framework...
+      </textarea>
+    </div>
+
+  </div>
+</div>
+
+<div class="card shadow-sm border-0">
+  <div class="card-body p-4">
+
+    <h5 class="fw-semibold text-dark mb-4 d-flex align-items-center gap-2">
+      <mat-icon class="text-primary">gavel</mat-icon>
+      Regulatory Reference
+    </h5>
+
+    <div class="mb-4">
+      <label class="form-label fw-medium">
+        Governing Regulation
+      </label>
+      <input
+        type="text"
+        class="form-control"
+        value="RBI CAMELS Framework - BRBS Notification">
+    </div>
+
+    <!-- Upload Area -->
+    <div
+      class="border border-2 border-dashed rounded-3 p-5 text-center mb-4 upload-box">
+
+      <div
+        class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto mb-3 upload-icon">
+        <mat-icon class="text-secondary fs-3">cloud_upload</mat-icon>
+      </div>
+
+      <p class="fw-medium mb-1">
+        Attach Regulatory Document
+      </p>
+      <p class="text-muted small mb-1">
+        RBI Circular PDF, Statute, or Internal Policy
+      </p>
+      <p class="text-primary small fw-medium mb-0">
+        Click to browse or drag & drop
+      </p>
+
+    </div>
+
+    <!-- Uploaded File -->
+    <div
+      class="d-flex align-items-center gap-3 p-3 bg-success bg-opacity-10 border border-success rounded-3">
+
+      <mat-icon class="text-danger fs-4">picture_as_pdf</mat-icon>
+
+      <div class="flex-grow-1">
+        <div class="fw-medium text-dark">
+          RBI_Circular_CAMELS_2024.pdf
+        </div>
+        <div class="text-muted small">
+          2.4 MB • Uploaded on 15 Jan 2026
+        </div>
+      </div>
+
+      <button
+        mat-icon-button
+        color="warn">
+        <mat-icon>close</mat-icon>
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+
+      </div>
+
+      <!-- STEP 2 -->
+      <div *ngIf="currentStep === 2" class="card shadow-sm">
+        <!-- ================= Evidence Configuration ================= -->
+<div class="bg-white rounded-3 shadow-sm border p-4 mb-4">
+
+  <h5 class="fw-semibold mb-1 d-flex align-items-center gap-2">
+    <mat-icon color="primary">storage</mat-icon>
+    Evidence Configuration
+  </h5>
+
+  <p class="text-muted small mb-4">
+    Select specific evidence types required for this audit based on your bank's operations
+    (Deposits & Loans)
+  </p>
+
+  <div class="row g-3 mb-4">
+  <div
+  class="col-12 col-md-6 col-lg-3"
+  *ngFor="let item of evidenceList"
+>
+  <label
+    class="evidence-card p-3 border rounded-3 position-relative h-100 w-100 cursor-pointer"
+    [class.border-primary]="selectedEvidence === item.value"
+    [class.bg-light]="selectedEvidence === item.value"
+  >
+
+    <!-- Hidden Radio -->
+    <input
+      type="radio"
+      class="form-check-input position-absolute top-0 end-0 m-2"
+      name="evidenceRadio"
+      [value]="item.value"
+      [(ngModel)]="selectedEvidence"
+    />
+
+    <!-- Icon -->
+    <div
+      class="d-flex align-items-center justify-content-center rounded mb-3"
+      style="width:48px;height:48px"
+      [ngClass]="item.iconBg"
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+    </div>
+
+    <h6 class="fw-semibold mb-1">{{ item.title }}</h6>
+    <p class="text-muted small mb-2">{{ item.subtitle }}</p>
+
+    <span class="badge" [ngClass]="item.badgeClass">
+      {{ item.priority }}
+    </span>
+  </label>
+</div>
+
+  </div>
+
+  <!-- Selected Evidence Summary -->
+  <div class="bg-light border rounded-3 p-3">
+    <div class="d-flex justify-content-between mb-1">
+      <span class="fw-medium small">Selected Evidence Description</span>
+      <span class="text-muted small">Auto-generated</span>
+    </div>
+    <input
+      type="text"
+      class="form-control form-control-sm"
+      [value]="selectedEvidenceText"
+      readonly
+    />
+  </div>
+</div>
+
+<!-- ================= Sampling Logic ================= -->
+<div class="bg-white rounded-3 shadow-sm border p-4 mb-4">
+
+  <h5 class="fw-semibold mb-3 d-flex align-items-center gap-2">
+    <mat-icon color="primary">shuffle</mat-icon>
+    Sampling Logic
+  </h5>
+
+  <div class="row g-3 mb-4">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let s of samplingOptions">
+      <label
+        class="border rounded-3 p-3 d-flex gap-3 cursor-pointer h-100"
+        [class.border-primary]="samplingType === s.value"
+        [class.bg-light]="samplingType === s.value"
+      >
+        <input
+          type="radio"
+          class="form-check-input mt-1"
+          name="sampling"
+          [value]="s.value"
+          [(ngModel)]="samplingType"
+        />
+        <div>
+          <div class="fw-semibold">{{ s.title }}</div>
+          <div class="text-muted small">{{ s.desc }}</div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Parameters -->
+  <div class="border-top pt-3">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label small fw-medium">Confidence Level</label>
+        <select class="form-select form-select-sm">
+          <option>95%</option>
+          <option>99%</option>
+          <option>90%</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label small fw-medium">Margin of Error</label>
+        <select class="form-select form-select-sm">
+          <option>5%</option>
+          <option>3%</option>
+          <option>10%</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label small fw-medium">Min Sample Size</label>
+        <input type="number" class="form-control form-control-sm" value="50" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= Reporting & Data Sources ================= -->
+<div class="bg-white rounded-3 shadow-sm border p-4">
+
+  <h5 class="fw-semibold mb-3 d-flex align-items-center gap-2">
+    <mat-icon color="primary">description</mat-icon>
+    Reporting & Data Sources
+  </h5>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <label class="form-label small fw-medium">Report Type / Output Format</label>
+      <select class="form-select">
+        <option>Long Form Audit Report (LFAR)</option>
+        <option>MR-3 Report</option>
+        <option>Form 3CD</option>
+        <option>Exception Report</option>
+        <option>VAPT / Security Audit</option>
+        <option>Management Letter</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label small fw-medium">Primary Data Source</label>
+      <select class="form-select">
+        <option>ERP / Financial Ledger</option>
+        <option>CBS</option>
+        <option>LMS</option>
+        <option>Deposit System</option>
+        <option>GST Portal</option>
+        <option>Server Logs</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <!-- STEP 3 -->
+      <div *ngIf="currentStep === 3" class="card shadow-sm">
+       <div class="row g-4">
+        <div class="col-12 col-lg-6">
+  <div class="bg-white rounded-3 shadow-sm border p-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-semibold d-flex align-items-center gap-2 mb-0">
+        <mat-icon class="text-primary">account_tree</mat-icon>
+        Branch Selection
+      </h5>
+      <button class="btn btn-link btn-sm text-primary p-0">
+        Select All South Zone
+      </button>
+    </div>
+
+    <!-- Tree Container -->
+    <div class="border rounded p-3 overflow-auto" style="height:320px">
+
+      <!-- Head Office -->
+      <div class="form-check d-flex align-items-center gap-2 mb-2">
+        <input class="form-check-input" type="checkbox" checked>
+        <mat-icon class="text-secondary">business</mat-icon>
+        <label class="form-check-label fw-medium">
+          Head Office - Mumbai
+        </label>
+      </div>
+
+      <!-- South Zone -->
+      <div class="mb-2">
+        <div class="form-check d-flex align-items-center gap-2">
+          <input class="form-check-input" type="checkbox" checked>
+          <mat-icon class="text-warning">folder</mat-icon>
+          <label class="form-check-label fw-medium">
+            South Zone
+          </label>
+          <mat-icon class="ms-auto text-muted fs-6">expand_more</mat-icon>
+        </div>
+
+        <!-- Children -->
+        <div class="ms-4 mt-2">
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="checkbox" checked>
+            <label class="form-check-label small">
+              Chennai Main Branch
+            </label>
+          </div>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="checkbox" checked>
+            <label class="form-check-label small">
+              Bangalore Koramangala
+            </label>
+          </div>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="checkbox" checked>
+            <label class="form-check-label small">
+              Hyderabad Hitech City
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- North Zone -->
+      <div class="form-check d-flex align-items-center gap-2">
+        <input class="form-check-input" type="checkbox">
+        <mat-icon class="text-warning">folder</mat-icon>
+        <label class="form-check-label fw-medium">
+          North Zone
+        </label>
+        <mat-icon class="ms-auto text-muted fs-6">chevron_right</mat-icon>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="col-12 col-lg-6">
+  <div class="bg-white rounded-3 shadow-sm border p-4">
+
+    <h5 class="fw-semibold d-flex align-items-center gap-2 mb-3">
+      <mat-icon class="text-primary">local_offer</mat-icon>
+      Department Tagging
+    </h5>
+
+    <div class="row g-3">
+
+      <!-- Department Card -->
+      <div class="col-6" *ngFor="let dept of departments">
+        <label
+          class="border rounded-3 p-3 d-flex gap-3 align-items-start w-100 cursor-pointer"
+          [class.border-primary]="dept.selected"
+          [class.bg-light]="dept.selected"
+        >
+          <input
+            type="checkbox"
+            class="form-check-input mt-1"
+            [(ngModel)]="dept.selected"
+          >
+          <div>
+            <div class="fw-medium">{{ dept.name }}</div>
+            <div class="text-muted small">{{ dept.desc }}</div>
+          </div>
+        </label>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div *ngIf="currentStep === 4" class="card shadow-sm">
+        <div class="card-body">
+          <div class="bg-white rounded-3 shadow-sm border p-4">
+            <h5 class="fw-semibold mb-4 d-flex align-items-center gap-2">
+  <mat-icon class="text-primary">star_half</mat-icon>
+  Scoring Methodology
+</h5>
+
+
+<div class="row g-3 mb-4">
+
+  <!-- Percentage Based -->
+  <div class="col-12 col-md-6">
+    <label
+      class="border rounded-3 p-3 d-flex gap-3 align-items-center position-relative cursor-pointer"
+      [class.border-primary]="scoringType === 'percentage'"
+      [class.bg-light]="scoringType === 'percentage'"
+    >
+      <input
+        type="radio"
+        class="form-check-input mt-1"
+        name="scoring"
+        value="percentage"
+        [(ngModel)]="scoringType"
+      >
+      <div>
+        <div class="fw-semibold">Percentage-based</div>
+        <div class="text-muted small">
+          Weightage across multiple parameters
+        </div>
+      </div>
+      <mat-icon
+        class="position-absolute end-0 me-3 text-primary opacity-25 fs-2"
+      >
+        percent
+      </mat-icon>
+    </label>
+  </div>
+
+  <!-- Point Based -->
+  <div class="col-12 col-md-6">
+    <label
+      class="border rounded-3 p-3 d-flex gap-3 align-items-center position-relative cursor-pointer"
+      [class.border-primary]="scoringType === 'points'"
+      [class.bg-light]="scoringType === 'points'"
+    >
+      <input
+        type="radio"
+        class="form-check-input mt-1"
+        name="scoring"
+        value="points"
+        [(ngModel)]="scoringType"
+      >
+      <div>
+        <div class="fw-semibold">Point-based</div>
+        <div class="text-muted small">
+          Cumulative scoring system
+        </div>
+      </div>
+      <mat-icon
+        class="position-absolute end-0 me-3 text-muted opacity-25 fs-2"
+      >
+        paid
+      </mat-icon>
+    </label>
+  </div>
+
+</div>
+<div class="row">
+   <div class="col-md-12">
+       <div class="border-top pt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h6 class="fw-semibold mb-0">
+      Criticality Matrix & Auto-Escalation
+    </h6>
+    <button class="btn btn-link btn-sm text-primary d-flex align-items-center gap-1 p-0">
+      <mat-icon class="fs-6">add</mat-icon>
+      Add Trigger
+    </button>
+  </div>
+  </div>
+
+
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-12">
+        <div class="table-responsive">
+  <table class="table table-sm align-middle mb-0">
+    <thead class="table-light">
+      <tr>
+        <th>Risk Indicator</th>
+        <th>Condition</th>
+        <th>Threshold</th>
+        <th>Escalate To</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- Row 1 -->
+      <tr>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-danger" style="width:8px;height:8px"></span>
+            <span class="fw-medium">Cash Mismatch</span>
+          </div>
+        </td>
+        <td class="text-muted">Greater Than</td>
+        <td>
+          <span class="badge bg-light text-dark font-monospace">
+            ₹10,000
+          </span>
+        </td>
+        <td class="fw-medium text-danger">
+          Vigilance Dept
+        </td>
+        <td>
+          <button class="btn btn-sm btn-link text-muted">
+            <mat-icon class="text-danger">delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+
+      <!-- Row 2 -->
+      <tr>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-warning" style="width:8px;height:8px"></span>
+            <span class="fw-medium">KYC Non-compliance</span>
+          </div>
+        </td>
+        <td class="text-muted">Count Exceeds</td>
+        <td>
+          <span class="badge bg-light text-dark font-monospace">
+            5 instances
+          </span>
+        </td>
+        <td class="fw-medium text-warning">
+          Compliance Head
+        </td>
+        <td>
+          <button class="btn btn-sm btn-link text-muted">
+            <mat-icon class="text-danger">delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+
+      <!-- Row 3 -->
+      <tr>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <span class="rounded-circle bg-warning-subtle" style="width:8px;height:8px"></span>
+            <span class="fw-medium">Documentation Gap</span>
+          </div>
+        </td>
+        <td class="text-muted">Percentage</td>
+        <td>
+          <span class="badge bg-light text-dark font-monospace">
+            &gt; 15%
+          </span>
+        </td>
+        <td class="fw-medium text-secondary">
+          Branch Manager
+        </td>
+        <td>
+          <button class="btn btn-sm btn-link text-muted">
+            <mat-icon class="text-danger">delete</mat-icon>
+          </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+   </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div *ngIf="currentStep === 5" class="card shadow-sm">
+        <div class="card-body">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-t pt-6">
+              <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-lg font-semibold mb-6 flex items-center gap-2">
+  <mat-icon color="primary">account_tree</mat-icon>
+  Approval Workflow Chain
+</h3>
+
+<div class="d-flex align-items-center justify-content-between px-3 mb-4">
+
+  <!-- Auditor -->
+  <label class="workflow-card">
+    <input
+      type="radio"
+      name="workflow"
+      value="auditor"
+      [(ngModel)]="selectedWorkflow"
+      class="form-check-input d-none"
+    />
+
+    <div class="workflow-box">
+      <div class="workflow-icon bg-primary-subtle text-primary">
+       <mat-icon>person</mat-icon>
+      </div>
+      <div class="fw-semibold">Auditor</div>
+      <div class="text-muted small">Initiates Report</div>
+    </div>
+  </label>
+
+  <div class="workflow-line"></div>
+
+  <!-- Branch -->
+  <label class="workflow-card">
+    <input
+      type="radio"
+      name="workflow"
+      value="branch"
+      [(ngModel)]="selectedWorkflow"
+      class="form-check-input d-none"
+    />
+
+    <div class="workflow-box">
+      <div class="workflow-icon bg-info-subtle text-info">
+        <mat-icon>store</mat-icon>
+      </div>
+      <div class="fw-semibold">Branch Manager</div>
+      <div class="text-muted small">1st Level Review</div>
+    </div>
+  </label>
+
+  <div class="workflow-line"></div>
+
+  <!-- Regional -->
+  <label class="workflow-card">
+    <input
+      type="radio"
+      name="workflow"
+      value="regional"
+      [(ngModel)]="selectedWorkflow"
+      class="form-check-input d-none"
+    />
+
+    <div class="workflow-box">
+      <div class="workflow-icon bg-warning-subtle text-warning">
+         <mat-icon>map</mat-icon>
+      </div>
+      <div class="fw-semibold">Regional Head</div>
+      <div class="text-muted small">2nd Level Approval</div>
+    </div>
+  </label>
+
+  <div class="workflow-line"></div>
+
+  <!-- HO -->
+  <label class="workflow-card">
+    <input
+      type="radio"
+      name="workflow"
+      value="ho"
+      [(ngModel)]="selectedWorkflow"
+      class="form-check-input d-none"
+    />
+
+    <div class="workflow-box">
+      <div class="workflow-icon bg-danger-subtle text-danger">
+          <mat-icon>business</mat-icon>
+      </div>
+      <div class="fw-semibold">Head Office</div>
+      <div class="text-muted small">Final Sign-off</div>
+    </div>
+  </label>
+
+</div>
+
+
+                </div>
+              </div>
+
+  <!-- SLA CONFIG -->
+  <div>
+    <h4 class="font-semibold mb-4 flex items-center gap-2">
+      <mat-icon color="primary">schedule</mat-icon>
+      SLA Configuration
+    </h4>
+
+    <div class="space-y-4">
+
+      <!-- Days to Respond -->
+      <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border">
+        <div>
+          <div class="text-sm font-medium">Days to Respond</div>
+          <div class="text-xs text-slate-500">Initial finding acknowledgment</div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button mat-mini-fab color="basic" (click)="changeRespondDays(-1)">-</button>
+
+          <mat-form-field appearance="outline" class="compact-field">
+            <input matInput type="number" [(ngModel)]="sla.daysToRespond">
+          </mat-form-field>
+
+          <button mat-mini-fab color="basic" (click)="changeRespondDays(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Days to Close -->
+      <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg border">
+        <div>
+          <div class="text-sm font-medium">Days to Close</div>
+          <div class="text-xs text-slate-500">Complete resolution deadline</div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button mat-mini-fab color="basic" (click)="changeCloseDays(-1)">-</button>
+
+          <mat-form-field appearance="outline" class="compact-field" >
+            <input matInput type="number" [(ngModel)]="sla.daysToClose">
+          </mat-form-field>
+
+          <button mat-mini-fab color="basic" (click)="changeCloseDays(1)">+</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NOTIFICATION SETTINGS -->
+  <div>
+    <h4 class="font-semibold mb-4 flex items-center gap-2">
+      <mat-icon color="primary">notifications</mat-icon>
+      Notification Settings
+    </h4>
+
+    <div class="space-y-3">
+
+      <mat-checkbox [(ngModel)]="notifications.email">
+        Email on Initiation
+      </mat-checkbox>
+
+      <mat-checkbox [(ngModel)]="notifications.sms">
+        SMS on Escalation
+      </mat-checkbox>
+
+      <mat-checkbox [(ngModel)]="notifications.digest">
+        Daily Digest to HO
+      </mat-checkbox>
+
+    </div>
+  </div>
+
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+
+
+
+
+
+
               </div>
             </div>
           </div>
         </div>
-        <button class="btn_save_sm_line" (click)="closeDialog()"> <mat-icon>close</mat-icon> Cancel</button>
+
+      </mat-dialog-content>
+      <div class="border-top bg-white px-4 py-3 d-flex justify-content-between">
+    <button class="btn btn-outline-secondary"
+            [disabled]="currentStep === 1"
+            (click)="previous()">
+      Back
+    </button>
+
+    <button class="btn btn-primary"
+            (click)="next()"
+            *ngIf="currentStep < 5">
+      Next
+    </button>
+
+    <button class="btn btn-success"
+            *ngIf="currentStep === 5">
+      Publish Configuration
+    </button>
+  </div>
+
+      <mat-dialog-actions >
+
+
+        <!-- <button class="btn_save_sm_line" (click)="closeDialog()"> <mat-icon>close</mat-icon> Cancel</button>
         <button class="btn_save_sm" (click)="closeDialog()">
            <mat-icon>save</mat-icon> Save
-        </button>
+        </button> -->
       </mat-dialog-actions>
     </ng-template>
     <div class="container-fluid">
       <mat-toolbar color="primary  d-flex  ">
-         <!-- <button mat-icon-button (click)="toggleSideMenu()"><mat-icon>menu</mat-icon></button> -->
+
         <h2 class="py-2 flex-grow-1 sub_title "> &nbsp; </h2>
         <span class="spacer"></span>
         <button mat-icon-button><mat-icon>notifications</mat-icon></button>
@@ -122,17 +983,13 @@ add
 
 
                     </div>
-                    <!-- <div class="flex gap-3">
-                        <button onclick="openStepper()" class="px-4 py-2.5 bg-bank-600 text-white rounded-lg text-sm font-medium hover:bg-bank-700 flex items-center gap-2 shadow-lg shadow-bank-500/30">
-                            <i class="fas fa-plus"></i> Create New Audit Type
-                        </button>
-                    </div> -->
+
                 </div>
             </div>
             </div>
             <div class="col-md-12">
                 <div class="flex-1 overflow-hidden flex flex-col lg:flex-row">
-                <!-- Master Grid -->
+
                 <div class="flex-1 overflow-auto custom-scrollbar p-6">
                     <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                         <table class="w-full text-left border-collapse">
@@ -151,7 +1008,7 @@ add
                             </thead>
                             <tbody id="auditGrid" class="border-top">
 
-  <!-- Row 1: Statutory Audit -->
+
   <tr class="align-middle table-active" data-category="statutory" onclick="selectRow(this, 0)">
     <td class="px-4 py-3">
       <input type="checkbox" class="form-check-input" checked>
@@ -208,7 +1065,7 @@ add
     </td>
   </tr>
 
-  <!-- Row 2: RBI Inspection -->
+
   <tr class="align-middle" data-category="regulatory" onclick="selectRow(this, 1)">
     <td class="px-4 py-3">
       <input type="checkbox" class="form-check-input">

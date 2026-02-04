@@ -59,7 +59,10 @@ export const routes: Routes = [
     path : 'audit-category', loadComponent :()=>import('./audit-category/audit-category.component').then(m=>m.AuditCategoryComponent)
   },
   {
-    path : 'audit-configuration', loadComponent :()=>import('./audit-configuration/audit-configuration.component').then(m=>m.AuditConfigurationComponent)
+    path : 'audit-configurationTest', loadComponent :()=>import('./audit-configuration/audit-configuration.component').then(m=>m.AuditConfigurationComponent)
+  },
+  {
+    path : 'audit-configuration', loadComponent :()=>import('./audit-config/audit-config.component').then(m=>m.AuditConfigComponent)
   },
   {
     path: '**',

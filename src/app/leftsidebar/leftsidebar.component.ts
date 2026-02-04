@@ -67,4 +67,11 @@ export class LeftsidebarComponent implements OnInit {
   auditUsergroup(){
     this.router.navigate(['/audit-user-groups']);
   }
+  auditCategory(){
+    this.router.navigate(['/audit-category']);
+  }
+  auditConfiguration(){
+    this.router.navigate(['/audit-configuration']);
+
+  }
 }

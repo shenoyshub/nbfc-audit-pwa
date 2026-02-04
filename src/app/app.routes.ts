@@ -55,7 +55,12 @@ export const routes: Routes = [
     path : 'audit-user-groups' , loadComponent : ()=>import('./audit-user-groups/audit-user-groups.component').then(m=>m.AuditUserGroupsComponent)
   }
   ,
-
+  {
+    path : 'audit-category', loadComponent :()=>import('./audit-category/audit-category.component').then(m=>m.AuditCategoryComponent)
+  },
+  {
+    path : 'audit-configuration', loadComponent :()=>import('./audit-configuration/audit-configuration.component').then(m=>m.AuditConfigurationComponent)
+  },
   {
     path: '**',
     redirectTo: 'audit-dashboard'
